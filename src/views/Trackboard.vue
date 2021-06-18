@@ -21,7 +21,7 @@
                 >
                     <div class="py-2">{{ stage.name }}</div>
                     <div class="grid gap-3 grid-cols-1 grid-flow-row auto-rows-min overflow-y-auto h-full">
-                        <div v-for="(item, ii) in stage.items" :key="ii" @click="selectItem(item)">
+                        <div v-for="(item, ii) in stage.items" :key="ii" @click="onSelectItem(item)">
                             <TrackboardItem :data="item"></TrackboardItem>
                         </div>
                         <div class="h-60"></div>
@@ -29,24 +29,26 @@
                 </div>
                 <div class="w-48"></div>
             </div>
-            <div
-                v-if="selectedItem.name != ''"
-                class="absolute p-5 sm:p-0 sm:relative z-10 sm:z-0 left-0 sm:left-auto top-0 sm:top-auto w-full h-full sm:h-auto bg-black bg-opacity-50 sm:w-60"
-            >
+            <transition name="fade">
                 <div
-                    class="bg-white p-4 sm:border-l sm:border-gray-300 rounded-md sm:rounded-none h-full flex-col justify-between"
+                    v-if="selectedItem.name != ''"
+                    class="absolute p-5 sm:p-0 sm:relative z-10 sm:z-0 left-0 sm:left-auto top-0 sm:top-auto w-full h-full sm:h-auto bg-black bg-opacity-50 sm:w-60"
                 >
-                    <div>
-                        {{ selectedItem.name }}
-                    </div>
-                    <div>
-                        {{ selectedItem.status }}
-                    </div>
-                    <div class="p-2 rounded-md bg-blue-500 text-white" @click="selectedItem = { name: '', status: '' }">
-                        Close
+                    <div
+                        class="bg-white p-4 sm:border-l sm:border-gray-300 rounded-md sm:rounded-none h-full flex-col justify-between"
+                    >
+                        <div>
+                            {{ selectedItem.name }}
+                        </div>
+                        <div>
+                            {{ selectedItem.status }}
+                        </div>
+                        <div class="p-2 rounded-md bg-blue-500 text-white" @click="onClose()">
+                            Close
+                        </div>
                     </div>
                 </div>
-            </div>
+            </transition>
         </div>
     </div>
 </template>
@@ -84,7 +86,12 @@ export default defineComponent({
         return { search, selectedItem, data };
     },
     methods: {
-        selectItem(item: { name: string; status: string }) {
+        onClose() {
+            this.selectedItem = { name: '', status: '' };
+            console.log({ selectedItem: this.selectedItem });
+        },
+        onSelectItem(item: { name: string; status: string }) {
+            console.log({ selectedItem: item });
             this.selectedItem = item;
         },
     },
