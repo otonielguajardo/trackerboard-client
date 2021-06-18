@@ -9,7 +9,7 @@
             class="rounded-r-none rounded-md w-2"
         ></div>
         <div class="bg-white p-3 rounded-l-none rounded-md mr-3 flex-grow">
-            {{ data.name }}
+            {{ name }}
         </div>
     </div>
 </template>
@@ -21,7 +21,7 @@ export default defineComponent({
     name: 'TrackboardItem',
     props: ['data'],
     computed: {
-        title(): string {
+        name(): string {
             return this.data.name || 'Cargando...';
         },
         status(): unknown {
