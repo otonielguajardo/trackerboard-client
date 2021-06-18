@@ -13,7 +13,7 @@
             </svg>
         </div>
         <div
-            :class="search != '' ? 'z-10 text-gray-400' : 'text-transparent'"
+            :class="search != '' ? 'z-10 text-gray-400 animate-spin-in' : 'text-transparent animate-spin-out'"
             class="p-2 col-start-1 col-end-2 row-start-1 row-end-2 cursor-pointer transition-all place-self-end"
             @click="search = ''"
         >
