@@ -1,4 +1,4 @@
-# status-tracker
+# trackboard
 
 ## Project setup
 ```

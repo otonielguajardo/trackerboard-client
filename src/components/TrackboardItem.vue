@@ -1,0 +1,32 @@
+<template>
+    <div class="flex">
+        <div
+            :class="{
+                'bg-red-500': status == 'red',
+                'bg-yellow-500': status == 'orange',
+                'bg-green-500': status == 'green',
+            }"
+            class="rounded-r-none rounded-md w-2"
+        ></div>
+        <div class="bg-white p-3 rounded-l-none rounded-md mr-3 flex-grow">
+            {{ data.name }}
+        </div>
+    </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+    name: 'TrackboardItem',
+    props: ['data'],
+    computed: {
+        title(): string {
+            return this.data.name || 'Cargando...';
+        },
+        status(): unknown {
+            return this.data.status || 'Cargando...';
+        },
+    },
+});
+</script>
