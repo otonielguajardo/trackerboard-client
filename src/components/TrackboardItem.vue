@@ -1,5 +1,5 @@
 <template>
-    <div class="flex">
+    <div class="flex cursor-pointer">
         <div
             :class="{
                 'bg-red-500': status == 'red',

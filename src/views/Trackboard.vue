@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg-gray-100">
         <div class="px-3 sm:px-4 py-2 bg-white flex justify-between items-center border-b border-gray-300">
             <div class="sm:w-60 flex">
                 <span class="mr-3">📦</span> <span class="hidden sm:block"><strong>Track</strong>board</span>
@@ -12,7 +12,7 @@
         <div class="flex justify-between">
             <div
                 id="trackboard"
-                class="bg-gray-100 flex-grow p-3 sm:p-4 grid gap-3 sm:gap-4 grid-rows-1 grid-flow-col auto-cols-min overflow-x-auto"
+                class="flex-grow p-3 sm:p-4 grid gap-3 sm:gap-4 grid-rows-1 grid-flow-col auto-cols-min overflow-x-auto"
             >
                 <div
                     class="bg-gray-200 pl-3 rounded-md w-48 h-full overflow-y-hidden"
@@ -29,37 +29,20 @@
                 </div>
                 <div class="w-48"></div>
             </div>
-            <transition name="fade">
-                <div
-                    v-if="selectedItem.name != ''"
-                    class="absolute p-5 sm:p-0 sm:relative z-10 sm:z-0 left-0 sm:left-auto top-0 sm:top-auto w-full h-full sm:h-auto bg-black bg-opacity-50 sm:w-60"
-                >
-                    <div
-                        class="bg-white p-4 sm:border-l sm:border-gray-300 rounded-md sm:rounded-none h-full flex-col justify-between"
-                    >
-                        <div>
-                            {{ selectedItem.name }}
-                        </div>
-                        <div>
-                            {{ selectedItem.status }}
-                        </div>
-                        <div class="p-2 rounded-md bg-blue-500 text-white" @click="onClose()">
-                            Close
-                        </div>
-                    </div>
-                </div>
-            </transition>
+
+            <TrackboardDetail></TrackboardDetail>
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import SearchInput from '@/components/SearchInput.vue';
+import TrackboardDetail from '@/components/TrackboardDetail.vue';
 import TrackboardItem from '@/components/TrackboardItem.vue';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-    components: { SearchInput, TrackboardItem },
+    components: { SearchInput, TrackboardItem, TrackboardDetail },
     name: 'Trackboard',
     setup() {
         const search = ref('hello');
@@ -86,13 +69,8 @@ export default defineComponent({
         return { search, selectedItem, data };
     },
     methods: {
-        onClose() {
-            this.selectedItem = { name: '', status: '' };
-            console.log({ selectedItem: this.selectedItem });
-        },
         onSelectItem(item: { name: string; status: string }) {
-            console.log({ selectedItem: item });
-            this.selectedItem = item;
+            this.$store.dispatch('items/setActiveItem', item);
         },
     },
 });

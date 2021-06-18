@@ -1,12 +1,13 @@
-import { createStore } from 'vuex'
+import { createStore } from 'vuex';
 
-export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+import items, { ItemState } from './items';
+
+export interface State {
+    items: ItemState;
+}
+
+export const store = createStore({
+    modules: {
+        items,
+    },
+});
