@@ -21,19 +21,19 @@
                 </div>
                 <div class="w-48"></div>
             </div>
-            <TrackboardDetail></TrackboardDetail>
+            <Modal></Modal>
         </div>
     </div>
 </template>
 
 <script lang="ts">
 import Navbar from '@/components/Navbar.vue';
-import TrackboardDetail from '@/components/TrackboardDetail.vue';
+import Modal from '@/components/Modal.vue';
 import TrackboardItem from '@/components/TrackboardItem.vue';
 import { defineComponent, ref } from 'vue';
 
 export default defineComponent({
-    components: { Navbar, TrackboardItem, TrackboardDetail },
+    components: { Navbar, TrackboardItem, Modal },
     name: 'Trackboard',
     setup() {
         const search = ref('hello');

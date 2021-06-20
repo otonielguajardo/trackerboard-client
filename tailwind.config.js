@@ -25,7 +25,7 @@ module.exports = {
 					'100%': { opacity: '0%' },
 				},
 				'spin-in': {
-					'0%': { transform: 'rotate(90deg)' },
+					'0%': { transform: 'rotate(60deg)' },
 					'100%': { transform: 'rotate(0deg)' },
 				},
 				'spin-out': {
