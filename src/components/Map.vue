@@ -1,18 +1,19 @@
 <template>
     <div>
-        <p>Agregar algunos planetas como markers</p>
         <p>Agregar rutas de cada personaje como poligonos</p>
         <LMap
             class="rounded-md bg-black"
-            style="height:200px"
+            style="height:300px"
             ref="map"
             v-model:zoom="zoom"
             :center="[height / 2, width / 2]"
-            :minZoom="-5"
+            :minZoom="1"
+            :maxZoom="2"
         >
             <LImageOverlay :url="imageOverlayUrl" :bounds="bounds"></LImageOverlay>
             <LMarker v-for="(marker, idx) in markers" :key="idx" :lat-lng="marker.coordinates">
-                <LPopup>{{ idx }}</LPopup>
+                <LIcon :icon-url="marker.iconUrl" :icon-size="[25, 25]"></LIcon>
+                <LPopup>{{ marker.name }}</LPopup>
             </LMarker>
         </LMap>
     </div>
@@ -22,7 +23,7 @@
 import { computed, defineComponent, ref } from 'vue';
 import { mapState } from 'vuex';
 import 'leaflet/dist/leaflet.css';
-import { LMap, LMarker, LImageOverlay, LPopup } from '@vue-leaflet/vue-leaflet';
+import { LMap, LMarker, LImageOverlay, LPopup, LIcon } from '@vue-leaflet/vue-leaflet';
 
 export default defineComponent({
     name: 'Map',
@@ -31,13 +32,32 @@ export default defineComponent({
         LImageOverlay,
         LMarker,
         LPopup,
+        LIcon,
     },
     setup() {
-        const imageOverlayUrl = ref('https://i.redd.it/s74gby7ikouy.jpg');
+        // const imageOverlayUrl = require('@/assets/images/map_layouts/galaxy_black.png');
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        const imageOverlayUrl = require('@/assets/images/map_layouts/galaxy_sw.jpg');
         const width = ref(200);
-        const height = ref(100);
+        const height = ref(150);
         const zoom = ref(2);
-        const markers = ref([{ coordinates: { lng: 100, lat: 50 } }]);
+        const markers = ref([
+            {
+                name: 'Coruscant',
+                coordinates: { lng: 95.65, lat: 71.75 },
+                iconUrl: require('@/assets/images/map_icons/coruscant.png'),
+            },
+            {
+                name: 'Tatooine',
+                coordinates: { lng: 151, lat: 41.5 },
+                iconUrl: require('@/assets/images/map_icons/tatooine.png'),
+            },
+            {
+                name: 'Hoth',
+                coordinates: { lng: 87.2, lat: 28.7 },
+                iconUrl: require('@/assets/images/map_icons/hoth.png'),
+            },
+        ]);
         const bounds = computed(() => [
             [0, 0],
             [height.value, width.value],
