@@ -1,6 +1,7 @@
 <template>
     <div>
         <p>Agregar rutas de cada personaje como poligonos</p>
+
         <LMap
             class="rounded-md bg-black"
             style="height:300px"
@@ -8,7 +9,7 @@
             v-model:zoom="zoom"
             :center="[height / 2, width / 2]"
             :minZoom="1"
-            :maxZoom="2"
+            :maxZoom="3"
         >
             <LImageOverlay :url="imageOverlayUrl" :bounds="bounds"></LImageOverlay>
             <LMarker v-for="(marker, idx) in markers" :key="idx" :lat-lng="marker.coordinates">
@@ -35,7 +36,7 @@ export default defineComponent({
         LIcon,
     },
     setup() {
-        // const imageOverlayUrl = require('@/assets/images/map_layouts/galaxy_black.png');
+        // const imageOverlayUrl = require('@/assets/images/map_layouts/galaxy_sw.jpg');
         // eslint-disable-next-line @typescript-eslint/no-var-requires
         const imageOverlayUrl = require('@/assets/images/map_layouts/galaxy_sw.jpg');
         const width = ref(200);
@@ -48,8 +49,13 @@ export default defineComponent({
                 iconUrl: require('@/assets/images/map_icons/coruscant.png'),
             },
             {
+                name: 'Naboo',
+           coordinates: { lng: 123, lat: 41.5 },
+                iconUrl: require('@/assets/images/map_icons/naboo.png'),
+            },
+            {
                 name: 'Tatooine',
-                coordinates: { lng: 151, lat: 41.5 },
+                coordinates: { lng: 154, lat: 39 },
                 iconUrl: require('@/assets/images/map_icons/tatooine.png'),
             },
             {
