@@ -10,7 +10,7 @@
             <div v-if="showComponent" class="modal-container">
                 <div class="modal-panel" v-if="showComponent">
                     <div class="flex justify-between">
-                        {{ activeItem.name }}
+                        {{ activeItem.pilot }}
                         <button class="p-2 rounded-md bg-blue-500 text-white" @click="onClose()">
                             Close
                         </button>

@@ -8,7 +8,7 @@
             >
                 <div
                     class="bg-gray-200 pl-3 rounded-md w-48 h-full overflow-y-hidden"
-                    v-for="(stage, si) in data"
+                    v-for="(stage, si) in boardData"
                     :key="si"
                 >
                     <div class="py-2">{{ stage.name }}</div>
@@ -31,58 +31,43 @@ import Navbar from '@/components/Navbar.vue';
 import Modal from '@/components/Modal.vue';
 import TrackboardItem from '@/components/TrackboardItem.vue';
 import { defineComponent, ref } from 'vue';
+import { mapState } from 'vuex';
+import _ from 'lodash';
+import { Item } from '@/models/Item';
 
 export default defineComponent({
     components: { Navbar, TrackboardItem, Modal },
     name: 'Trackboard',
     setup() {
         const search = ref('hello');
-        const selectedItem = ref({ name: '', status: '' });
-        const data = ref([
-            {
-                name: 'Posicionamiento',
-                items: [
-                    { name: 'Luke', status: 'green' },
-                    { name: 'Greedo', status: 'orange' },
-                ],
+        return { search };
+    },
+    computed: {
+        ...mapState('items', {
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            boardData: (state: any) => {
+                let data = _.chain(state.allItems)
+                    .groupBy('stage')
+                    .map((value: Array<Item>, key: string) => ({
+                        name: key,
+                        items: value.map((item: Item) => ({
+                            pilot: item.pilot,
+                            status: item.status,
+                        })),
+                    }))
+                    .value();
+                console.log(data);
+                return data;
             },
-            {
-                name: 'Carga',
-                items: [
-                    { name: 'Han', status: 'red' },
-                    { name: 'Leia', status: 'orange' },
-                    { name: 'Chewie', status: 'orange' },
-                    { name: 'Darth Vader', status: 'green' },
-                    { name: 'Obi Wan', status: 'red' },
-                ],
-            },
-            {
-                name: 'Tránsito',
-                items: [
-                    { name: 'Darth Maul', status: 'red' },
-                    { name: 'Zebulba', status: 'green' },
-                    { name: 'Watto', status: 'red' },
-                ],
-            },
-            {
-                name: 'Descarga',
-                items: [
-                    { name: 'R2-D2', status: 'red' },
-                    { name: 'C-3PO', status: 'orange' },
-                    { name: 'Padme', status: 'orange' },
-                    { name: 'Jabba', status: 'green' },
-                    { name: 'Boba Fett', status: 'red' },
-                    { name: 'Anakin', status: 'orange' },
-                    { name: 'Panaka', status: 'orange' },
-                ],
-            },
-        ]);
-        return { search, selectedItem, data };
+        }),
     },
     methods: {
         onSelectItem(item: { name: string; status: string }) {
             this.$store.dispatch('items/setActiveItem', item);
         },
+    },
+    mounted() {
+        this.$store.dispatch('items/fetchAllItems');
     },
 });
 </script>

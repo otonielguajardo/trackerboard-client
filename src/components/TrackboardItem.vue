@@ -9,7 +9,7 @@
             class="rounded-r-none rounded-md w-2"
         ></div>
         <div class="bg-white p-3 rounded-l-none rounded-md mr-3 flex-grow">
-            {{ name }}
+            {{ pilot }}
         </div>
     </div>
 </template>
@@ -21,8 +21,8 @@ export default defineComponent({
     name: 'TrackboardItem',
     props: ['data'],
     computed: {
-        name(): string {
-            return this.data.name || 'Cargando...';
+        pilot(): string {
+            return this.data.pilot || 'Cargando...';
         },
         status(): unknown {
             return this.data.status || 'Cargando...';

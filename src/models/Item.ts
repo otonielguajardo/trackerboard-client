@@ -1,4 +1,5 @@
 export interface Item {
-    name: string;
+    pilot: string;
     status: string;
+    stage: string;
 }
