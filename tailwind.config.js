@@ -10,7 +10,7 @@ module.exports = {
 				},
 			},
 			animation: {
-				'spin-in': 'spin-in 0.1s ease-out 1',
+				'spin-in': 'spin-in 0.2s ease-out 1',
 				'spin-out': 'spin-out 0.1s ease-out 1',
 				'fade-in': 'fade-in 0.1s ease-out 1',
 				'fade-out': 'fade-out 0.1s ease-out 1 forwards',
@@ -25,7 +25,7 @@ module.exports = {
 					'100%': { opacity: '0%' },
 				},
 				'spin-in': {
-					'0%': { transform: 'rotate(60deg)' },
+					'0%': { transform: 'rotate(90deg)' },
 					'100%': { transform: 'rotate(0deg)' },
 				},
 				'spin-out': {

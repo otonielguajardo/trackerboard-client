@@ -14,12 +14,12 @@
             ref="map"
             v-model:zoom="zoom"
             :center="[height / 2, width / 2]"
-            :minZoom="1"
-            :maxZoom="4"
+            :minZoom="2"
+            :maxZoom="5"
         >
             <LImageOverlay :url="imageOverlayUrl" :bounds="bounds"></LImageOverlay>
             <LMarker v-for="(marker, idx) in markers" :key="idx" :lat-lng="marker.coordinates">
-                <LIcon :icon-url="marker.iconUrl" :icon-size="[zoom ** 3.7, zoom ** 3.7]"></LIcon>
+                <LIcon :icon-url="marker.iconUrl" :icon-size="[zoom ** 3.3, zoom ** 3.3]"></LIcon>
                 <LPopup> {{ marker.name }} {{ marker.coordinates }} </LPopup>
             </LMarker>
         </LMap>
@@ -43,7 +43,7 @@ export default defineComponent({
     },
     setup() {
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const imageOverlayUrl = require('@/assets/images/map/layouts/galaxy_sw_noise.png');
+        const imageOverlayUrl = require('@/assets/images/map/layouts/galaxy_1.png');
         // const imageOverlayUrl = require('@/assets/images/map/layouts/galaxy_sw.jpg');
         const width = ref(200);
         const height = ref(150);
