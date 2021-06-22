@@ -1,18 +1,18 @@
 <template>
     <div class="modal" v-if="renderComponent">
-        <transition name="fade" appear>
+        <!-- <transition name="fade" appear>
             <div v-if="activeItemLoading" class="modal-loading"></div>
-        </transition>
+        </transition> -->
         <transition name="fade" appear>
             <div v-if="showComponent" @click="onClose()" class="modal-overlay"></div>
         </transition>
         <transition name="slide" appear>
             <div v-if="showComponent" class="modal-container">
                 <div class="modal-panel" v-if="showComponent">
-                    <div class="flex justify-between">
+                    <div class="flex justify-between mb-3">
                         {{ activeItem.pilot }}
-                        <button class="p-2 rounded-md bg-blue-500 text-white" @click="onClose()">
-                            Close
+                        <button class="px-3 py-1 rounded-md bg-blue-500 text-white" @click="onClose()">
+                            X
                         </button>
                     </div>
                     <TrackboardDetail></TrackboardDetail>
@@ -36,7 +36,7 @@ export default defineComponent({
     },
     methods: {
         onClose() {
-            this.$store.dispatch('items/setActiveItem', { name: '', status: '' });
+            this.$store.dispatch('items/setActiveItem', { name: '', status: '', progress: 0 });
         },
     },
     watch: {

@@ -1,6 +1,12 @@
 <template>
     <div>
-        <p>Agregar rutas de cada personaje como poligonos</p>
+        <div class="pb-3">
+            <p>TODO:</p>
+            <ul>
+                <li>Agregar rutas de cada personaje como poligonos</li>
+                <li>Mostrar la nave que pilotea cada personaje</li>
+            </ul>
+        </div>
 
         <LMap
             class="rounded-md bg-black"
@@ -9,12 +15,12 @@
             v-model:zoom="zoom"
             :center="[height / 2, width / 2]"
             :minZoom="1"
-            :maxZoom="3"
+            :maxZoom="4"
         >
             <LImageOverlay :url="imageOverlayUrl" :bounds="bounds"></LImageOverlay>
             <LMarker v-for="(marker, idx) in markers" :key="idx" :lat-lng="marker.coordinates">
-                <LIcon :icon-url="marker.iconUrl" :icon-size="[25, 25]"></LIcon>
-                <LPopup>{{ marker.name }}</LPopup>
+                <LIcon :icon-url="marker.iconUrl" :icon-size="[zoom ** 3.7, zoom ** 3.7]"></LIcon>
+                <LPopup> {{ marker.name }} {{ marker.coordinates }} </LPopup>
             </LMarker>
         </LMap>
     </div>
@@ -36,9 +42,9 @@ export default defineComponent({
         LIcon,
     },
     setup() {
-        // const imageOverlayUrl = require('@/assets/images/map_layouts/galaxy_sw.jpg');
         // eslint-disable-next-line @typescript-eslint/no-var-requires
-        const imageOverlayUrl = require('@/assets/images/map_layouts/galaxy_sw.jpg');
+        const imageOverlayUrl = require('@/assets/images/map/layouts/galaxy_sw_noise.png');
+        // const imageOverlayUrl = require('@/assets/images/map/layouts/galaxy_sw.jpg');
         const width = ref(200);
         const height = ref(150);
         const zoom = ref(2);
@@ -46,22 +52,37 @@ export default defineComponent({
             {
                 name: 'Coruscant',
                 coordinates: { lng: 95.65, lat: 71.75 },
-                iconUrl: require('@/assets/images/map_icons/coruscant.png'),
+                iconUrl: require('@/assets/images/map/icons/planets/coruscant.png'),
             },
             {
                 name: 'Naboo',
-           coordinates: { lng: 123, lat: 41.5 },
-                iconUrl: require('@/assets/images/map_icons/naboo.png'),
+                coordinates: { lng: 125, lat: 40 },
+                iconUrl: require('@/assets/images/map/icons/planets/naboo.png'),
             },
             {
                 name: 'Tatooine',
                 coordinates: { lng: 154, lat: 39 },
-                iconUrl: require('@/assets/images/map_icons/tatooine.png'),
+                iconUrl: require('@/assets/images/map/icons/planets/tatooine.png'),
             },
             {
                 name: 'Hoth',
                 coordinates: { lng: 87.2, lat: 28.7 },
-                iconUrl: require('@/assets/images/map_icons/hoth.png'),
+                iconUrl: require('@/assets/images/map/icons/planets/hoth.png'),
+            },
+            {
+                name: 'Mon Calamari',
+                coordinates: { lat: 78.9, lng: 174.8 },
+                iconUrl: require('@/assets/images/map/icons/planets/mon_calamari.png'),
+            },
+            {
+                name: 'Kashyyyk',
+                coordinates: { lat: 72, lng: 137.2 },
+                iconUrl: require('@/assets/images/map/icons/planets/kashyyyk.png'),
+            },
+            {
+                name: 'Dantooine',
+                coordinates: { lat: 82, lng: 95.7 },
+                iconUrl: require('@/assets/images/map/icons/planets/dantooine.png'),
             },
         ]);
         const bounds = computed(() => [
@@ -80,6 +101,9 @@ export default defineComponent({
     },
     computed: {
         ...mapState('items', ['activeItem', 'activeItemLoading']),
+    },
+    async beforeMount() {
+        // HERE is where to load Leaflet components!
     },
 });
 </script>

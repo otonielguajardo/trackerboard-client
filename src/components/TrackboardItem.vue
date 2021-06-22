@@ -8,7 +8,7 @@
             }"
             class="rounded-r-none rounded-md w-2"
         ></div>
-        <div class="bg-white p-3 rounded-l-none rounded-md mr-3 flex-grow">
+        <div class="bg-white dark:bg-gray-900 p-3 rounded-l-none rounded-md mr-3 flex-grow">
             {{ pilot }}
         </div>
     </div>

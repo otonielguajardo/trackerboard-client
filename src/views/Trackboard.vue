@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-100">
+    <div class="bg-gray-100 dark:bg-gray-800">
         <Navbar></Navbar>
         <div class="flex justify-between">
             <div
@@ -7,7 +7,7 @@
                 class="w-1 flex-grow p-3 sm:p-4 grid gap-3 sm:gap-4 grid-rows-1 grid-flow-col auto-cols-min overflow-x-auto"
             >
                 <div
-                    class="bg-gray-200 pl-3 rounded-md w-48 h-full overflow-y-hidden"
+                    class="bg-gray-200 dark:bg-gray-700 pl-3 rounded-md w-48 h-full overflow-y-hidden"
                     v-for="(stage, si) in boardData"
                     :key="si"
                 >
@@ -50,10 +50,7 @@ export default defineComponent({
                     .groupBy('stage')
                     .map((value: Array<Item>, key: string) => ({
                         name: key,
-                        items: value.map((item: Item) => ({
-                            pilot: item.pilot,
-                            status: item.status,
-                        })),
+                        items: value,
                     }))
                     .value();
                 console.log(data);

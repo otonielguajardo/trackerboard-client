@@ -2,7 +2,20 @@
     <div>
         <StatusSteps></StatusSteps>
         <Map></Map>
-        <div>{{ activeItem.pilot }}</div>
+        <table class="w-full mt-3">
+            <tr>
+                <td>Pilot</td>
+                <td>{{ activeItem.pilot }}</td>
+            </tr>
+            <tr>
+                <td>Stage</td>
+                <td>{{ activeItem.stage }}</td>
+            </tr>
+            <tr>
+                <td>Progress</td>
+                <td>{{ activeItem.progress }}</td>
+            </tr>
+        </table>
     </div>
 </template>
 

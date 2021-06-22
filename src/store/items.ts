@@ -10,30 +10,30 @@ export interface ItemState {
 
 const state: ItemState = {
     allItems: [],
-    activeItem: { stage: '', pilot: '', status: '' },
+    activeItem: { stage: '', pilot: '', status: '', progress: 0 },
     activeItemLoading: false,
 };
 
 const mutations = {
     SET_ALL_ITEMS: (state: ItemState): void => {
         state.allItems = [
-            { stage: 'Posicionamiento', pilot: 'Luke', status: 'green' },
-            { stage: 'Posicionamiento', pilot: 'Greedo', status: 'orange' },
-            { stage: 'Carga', pilot: 'Han', status: 'red' },
-            { stage: 'Carga', pilot: 'Leia', status: 'orange' },
-            { stage: 'Carga', pilot: 'Darth Vader', status: 'green' },
-            { stage: 'Carga', pilot: 'Obi Wan', status: 'red' },
-            { stage: 'Tránsito', pilot: 'Darth Maul', status: 'red' },
-            { stage: 'Tránsito', pilot: 'Zebulba', status: 'green' },
-            { stage: 'Tránsito', pilot: 'Watto', status: 'red' },
-            { stage: 'Descarga', pilot: 'R2-D2', status: 'red' },
-            { stage: 'Descarga', pilot: 'C-3PO', status: 'orange' },
-            { stage: 'Descarga', pilot: 'Padme', status: 'orange' },
-            { stage: 'Descarga', pilot: 'Jabba', status: 'green' },
-            { stage: 'Descarga', pilot: 'Boba Fett', status: 'red' },
-            { stage: 'Finalizado', pilot: 'Anakin', status: 'green' },
-            { stage: 'Finalizado', pilot: 'Panaka', status: 'orange' },
-            { stage: 'Finalizado', pilot: 'Chewie', status: 'orange' },
+            { stage: 'Position', pilot: 'Luke', status: 'green', progress: 10 },
+            { stage: 'Position', pilot: 'Greedo', status: 'orange', progress: 42 },
+            { stage: 'Load', pilot: 'Han', status: 'red', progress: 64 },
+            { stage: 'Load', pilot: 'Leia', status: 'orange', progress: 87 },
+            { stage: 'Load', pilot: 'Darth Vader', status: 'green', progress: 42 },
+            { stage: 'Load', pilot: 'Obi Wan', status: 'red', progress: 54 },
+            { stage: 'Transit', pilot: 'Darth Maul', status: 'red', progress: 18 },
+            { stage: 'Transit', pilot: 'Zebulba', status: 'green', progress: 0 },
+            { stage: 'Transit', pilot: 'Watto', status: 'red', progress: 62 },
+            { stage: 'Download', pilot: 'R2-D2', status: 'red', progress: 69 },
+            { stage: 'Download', pilot: 'C-3PO', status: 'orange', progress: 19 },
+            { stage: 'Download', pilot: 'Padme', status: 'orange', progress: 40 },
+            { stage: 'Download', pilot: 'Jabba', status: 'green', progress: 29 },
+            { stage: 'Download', pilot: 'Boba Fett', status: 'red', progress: 92 },
+            { stage: 'Completed', pilot: 'Anakin', status: 'green', progress: 17 },
+            { stage: 'Completed', pilot: 'Panaka', status: 'orange', progress: 36 },
+            { stage: 'Completed', pilot: 'Chewie', status: 'orange', progress: 30 },
         ];
     },
     SET_ACTIVE_ITEM: (state: ItemState, data: Item): void => {
