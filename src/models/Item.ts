@@ -3,4 +3,5 @@ export interface Item {
     status: string;
     stage: string;
     progress: number;
+    img?: string;
 }

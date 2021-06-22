@@ -2,11 +2,15 @@
     <div>
         <StatusSteps></StatusSteps>
         <Map></Map>
+        <div class="flex my-3">
+            <div v-if="activeItem.img" class="mr-3">
+                <img class="h-20 w-20 object-cover rounded-full" :src="require('@/assets/images/profile/' + activeItem.img)" :alt="activeItem.pilot" />
+            </div>
+            <div>
+                {{ activeItem.pilot }}
+            </div>
+        </div>
         <table class="w-full mt-3">
-            <tr>
-                <td>Pilot</td>
-                <td>{{ activeItem.pilot }}</td>
-            </tr>
             <tr>
                 <td>Stage</td>
                 <td>{{ activeItem.stage }}</td>
