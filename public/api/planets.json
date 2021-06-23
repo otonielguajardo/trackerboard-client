@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Coruscant",
+        "coordinates": { "lng": 95.65, "lat": 71.75 },
+        "src": "/img/planets/coruscant.png"
+    },
+    {
+        "name": "Naboo",
+        "coordinates": { "lng": 125, "lat": 40 },
+        "src": "/img/planets/naboo.png"
+    },
+    {
+        "name": "Tatooine",
+        "coordinates": { "lng": 154, "lat": 39 },
+        "src": "/img/planets/tatooine.png"
+    },
+    {
+        "name": "Hoth",
+        "coordinates": { "lng": 87.2, "lat": 28.7 },
+        "src": "/img/planets/hoth.png"
+    },
+    {
+        "name": "Mon Calamari",
+        "coordinates": { "lat": 78.9, "lng": 174.8 },
+        "src": "/img/planets/mon_calamari.png"
+    },
+    {
+        "name": "Kashyyyk",
+        "coordinates": { "lat": 72, "lng": 137.2 },
+        "src": "/img/planets/kashyyyk.png"
+    },
+    {
+        "name": "Dantooine",
+        "coordinates": { "lat": 82, "lng": 95.7 },
+        "src": "/img/planets/dantooine.png"
+    }
+]

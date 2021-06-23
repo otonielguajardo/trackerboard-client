@@ -3,5 +3,7 @@ export interface Shipment {
     status: string;
     stage: string;
     progress: number;
-    img?: string;
+    ship?: string;
+    src?: string;
+    coordinates?: { lat: number; lng: number };
 }

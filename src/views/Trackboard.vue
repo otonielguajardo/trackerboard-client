@@ -58,6 +58,8 @@ export default defineComponent({
     },
     mounted() {
         this.$store.dispatch('shipments/fetchAllShipments');
+        this.$store.dispatch('planets/fetchAllPlanets');
+        this.$store.dispatch('map/fetchAll');
     },
 });
 </script>

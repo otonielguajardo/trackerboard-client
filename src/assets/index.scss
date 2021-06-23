@@ -13,9 +13,9 @@
 
 * {
     -webkit-tap-highlight-color: transparent;
-    &:focus-visible {
-        outline: none;
-    }
+    outline: none;
+    // &:focus-visible {
+    // }
 }
 
 body {
@@ -35,3 +35,19 @@ body.dark {
 @import './navbar.scss';
 @import './modal.scss';
 @import './transitions.scss';
+
+.button-group {
+    @apply flex;
+    button {
+        @apply p-1;
+        &:only-of-type {
+            @apply rounded-md;
+        }
+        &:first-of-type {
+            @apply rounded-r-none rounded-l-md;
+        }
+        &:last-of-type {
+            @apply rounded-l-none rounded-r-md;
+        }
+    }
+}

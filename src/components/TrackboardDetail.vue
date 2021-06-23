@@ -3,10 +3,10 @@
         <StatusSteps></StatusSteps>
         <Map></Map>
         <div class="flex my-3">
-            <div v-if="activeShipment.img" class="mr-3">
+            <div v-if="activeShipment.src" class="mr-3">
                 <img
                     class="h-20 w-20 object-cover rounded-full"
-                    :src="require('@/assets/images/profile/' + activeShipment.img)"
+                    :src="activeShipment.src"
                     :alt="activeShipment.pilot"
                 />
             </div>
@@ -14,16 +14,6 @@
                 {{ activeShipment.pilot }}
             </div>
         </div>
-        <table class="w-full mt-3">
-            <tr>
-                <td>Stage</td>
-                <td>{{ activeShipment.stage }}</td>
-            </tr>
-            <tr>
-                <td>Progress</td>
-                <td>{{ activeShipment.progress }}</td>
-            </tr>
-        </table>
     </div>
 </template>
 

@@ -7,8 +7,8 @@
         <div class="flex justify-end items-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
             <SearchInput></SearchInput>
             <div class="ml-3 h-9 cursor-pointer" @click="toggleTheme()">
-                <img v-if="theme == 'dark'" class="h-full rounded-full" src="@/assets/images/dark-user.png" />
-                <img v-else class="h-full rounded-full" src="@/assets/images/light-user.png" />
+                <img v-if="theme == 'dark'" class="h-full rounded-full" src="@/assets/img/dark-user.png" />
+                <img v-else class="h-full rounded-full" src="@/assets/img/light-user.png" />
             </div>
         </div>
     </div>

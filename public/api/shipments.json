@@ -1,0 +1,45 @@
+[
+    {
+        "stage": "Quotation",
+        "pilot": "Watto",
+        "status": "red",
+        "progress": 0
+    },
+    { "stage": "Quotation", "pilot": "Chewie", "status": "orange", "progress": 0 },
+    { "stage": "Quotation", "pilot": "R2-D2", "status": "red", "progress": 0 },
+    {
+        "stage": "Position",
+        "pilot": "Luke",
+        "status": "green",
+        "progress": 27,
+        "src": "/img/characters/luke.png",
+        "ship": "/img/ships/xwing.png"
+    },
+    {
+        "stage": "Position",
+        "pilot": "Greedo",
+        "status": "orange",
+        "progress": 20,
+        "src": "/img/characters/greedo.png"
+    },
+    { "stage": "Position", "pilot": "Anakin", "status": "green", "progress": 17 },
+    { "stage": "Load", "pilot": "Han", "status": "red", "progress": 34 },
+    { "stage": "Load", "pilot": "Leia", "status": "orange", "progress": 38 },
+    { "stage": "Load", "pilot": "Darth Vader", "status": "green", "progress": 42 },
+    { "stage": "Load", "pilot": "Obi Wan", "status": "red", "progress": 54 },
+    {
+        "stage": "Transit",
+        "pilot": "Darth Maul",
+        "status": "red",
+        "progress": 67,
+        "src": "/img/characters/darth_maul.png",
+        "ship": "/img/ships/scimitar.png",
+        "coordinates": { "lng": 95.65, "lat": 71.75 }
+    },
+    { "stage": "Transit", "pilot": "Zebulba", "status": "green", "progress": 70 },
+    { "stage": "Download", "pilot": "C-3PO", "status": "orange", "progress": 82 },
+    { "stage": "Download", "pilot": "Padme", "status": "orange", "progress": 69 },
+    { "stage": "Download", "pilot": "Jabba", "status": "green", "progress": 98 },
+    { "stage": "Download", "pilot": "Boba Fett", "status": "red", "progress": 100 },
+    { "stage": "Download", "pilot": "Panaka", "status": "orange", "progress": 100 }
+]
