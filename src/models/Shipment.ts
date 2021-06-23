@@ -1,4 +1,4 @@
-export interface Item {
+export interface Shipment {
     pilot: string;
     status: string;
     stage: string;

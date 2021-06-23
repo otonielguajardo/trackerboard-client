@@ -1,7 +1,7 @@
 <template>
     <div class="modal" v-if="renderComponent">
         <!-- <transition name="fade" appear>
-            <div v-if="activeItemLoading" class="modal-loading"></div>
+            <div v-if="activeShipmentLoading" class="modal-loading"></div>
         </transition> -->
         <transition name="fade" appear>
             <div v-if="showComponent" @click="onClose()" class="modal-overlay"></div>
@@ -10,7 +10,7 @@
             <div v-if="showComponent" class="modal-container">
                 <div class="modal-panel" v-if="showComponent">
                     <div class="flex justify-between mb-3">
-                        {{ activeItem.pilot }}
+                        {{ activeShipment.pilot }}
                         <button class="px-3 py-1 rounded-md bg-blue-500 text-white" @click="onClose()">
                             X
                         </button>
@@ -36,11 +36,11 @@ export default defineComponent({
     },
     methods: {
         onClose() {
-            this.$store.dispatch('items/setActiveItem', { name: '', status: '', progress: 0 });
+            this.$store.dispatch('shipments/setActiveShipment', { name: '', status: '', progress: 0 });
         },
     },
     watch: {
-        activeItem(val): void {
+        activeShipment(val): void {
             if (val.name != '') {
                 this.renderComponent = true;
             } else {
@@ -51,9 +51,9 @@ export default defineComponent({
         },
     },
     computed: {
-        ...mapState('items', ['activeItem', 'activeItemLoading']),
+        ...mapState('shipments', ['activeShipment', 'activeShipmentLoading']),
         showComponent(): boolean {
-            return this.activeItem.name != '';
+            return this.activeShipment.name != '';
         },
     },
 });

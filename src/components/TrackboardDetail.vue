@@ -3,21 +3,25 @@
         <StatusSteps></StatusSteps>
         <Map></Map>
         <div class="flex my-3">
-            <div v-if="activeItem.img" class="mr-3">
-                <img class="h-20 w-20 object-cover rounded-full" :src="require('@/assets/images/profile/' + activeItem.img)" :alt="activeItem.pilot" />
+            <div v-if="activeShipment.img" class="mr-3">
+                <img
+                    class="h-20 w-20 object-cover rounded-full"
+                    :src="require('@/assets/images/profile/' + activeShipment.img)"
+                    :alt="activeShipment.pilot"
+                />
             </div>
             <div>
-                {{ activeItem.pilot }}
+                {{ activeShipment.pilot }}
             </div>
         </div>
         <table class="w-full mt-3">
             <tr>
                 <td>Stage</td>
-                <td>{{ activeItem.stage }}</td>
+                <td>{{ activeShipment.stage }}</td>
             </tr>
             <tr>
                 <td>Progress</td>
-                <td>{{ activeItem.progress }}</td>
+                <td>{{ activeShipment.progress }}</td>
             </tr>
         </table>
     </div>
@@ -36,7 +40,7 @@ export default defineComponent({
         Map,
     },
     computed: {
-        ...mapState('items', ['activeItem', 'activeItemLoading']),
+        ...mapState('shipments', ['activeShipment', 'activeShipmentLoading']),
     },
 });
 </script>

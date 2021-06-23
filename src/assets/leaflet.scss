@@ -1,4 +1,8 @@
 .leaflet {
+    &-popup-tip,
+    &-popup-content-wrapper {
+        font-family: 'Rubik', sans-serif;
+    }
     &-control {
         &-attribution {
             @apply bg-black rounded-tl-sm;

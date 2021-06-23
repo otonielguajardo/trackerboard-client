@@ -40,12 +40,12 @@ export default defineComponent({
         return { stages };
     },
     computed: {
-        ...mapState('items', ['activeItem', 'activeItemLoading']),
+        ...mapState('shipments', ['activeShipment', 'activeShipmentLoading']),
         status(): boolean {
-            return this.activeItem.status;
+            return this.activeShipment.status;
         },
         progress(): number {
-            return this.activeItem.progress || 0;
+            return this.activeShipment.progress || 0;
         },
     },
 });

@@ -1,7 +1,7 @@
 <template>
     <div
         :class="search != '' ? 'w-full' : 'w-10'"
-        class="transition-all border border-gray-300 rounded-full grid overflow-hidden"
+        class="transition-all border dark:border-gray-700 border-gray-300 rounded-full grid overflow-hidden"
     >
         <div class="p-2 col-start-1 col-end-2 row-start-1 text-gray-400 row-end-2 place-self-start z-10">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">

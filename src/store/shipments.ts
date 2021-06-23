@@ -1,22 +1,22 @@
-import { Item } from '@/models/Item';
+import { Shipment } from '@/models/Shipment';
 import { ActionContext } from 'vuex';
 import { State } from './index';
 
-export interface ItemState {
-    allItems: Array<Item>;
-    activeItem: Item;
-    activeItemLoading: boolean;
+export interface ShipmentState {
+    allShipments: Array<Shipment>;
+    activeShipment: Shipment;
+    activeShipmentLoading: boolean;
 }
 
-const state: ItemState = {
-    allItems: [],
-    activeItem: { stage: '', pilot: '', status: '', progress: 0 },
-    activeItemLoading: false,
+const state: ShipmentState = {
+    allShipments: [],
+    activeShipment: { stage: '', pilot: '', status: '', progress: 0 },
+    activeShipmentLoading: false,
 };
 
 const mutations = {
-    SET_ALL_ITEMS: (state: ItemState): void => {
-        state.allItems = [
+    SET_ALL_SHIPMENTS: (state: ShipmentState): void => {
+        state.allShipments = [
             { stage: 'Quotation', pilot: 'Watto', status: 'red', progress: 0 },
             { stage: 'Quotation', pilot: 'Chewie', status: 'orange', progress: 0 },
             { stage: 'Quotation', pilot: 'R2-D2', status: 'red', progress: 0 },
@@ -36,23 +36,23 @@ const mutations = {
             { stage: 'Download', pilot: 'Panaka', status: 'orange', progress: 100 },
         ];
     },
-    SET_ACTIVE_ITEM: (state: ItemState, data: Item): void => {
-        state.activeItem = data;
+    SET_ACTIVE_SHIPMENT: (state: ShipmentState, data: Shipment): void => {
+        state.activeShipment = data;
     },
-    SET_ACTIVE_ITEM_LOADING: (state: ItemState, data: boolean): void => {
-        state.activeItemLoading = data;
+    SET_ACTIVE_SHIPMENT_LOADING: (state: ShipmentState, data: boolean): void => {
+        state.activeShipmentLoading = data;
     },
 };
 
 const actions = {
-    async fetchAllItems(ctx: ActionContext<ItemState, State>): Promise<void> {
-        ctx.commit('SET_ALL_ITEMS');
+    async fetchAllShipments(ctx: ActionContext<ShipmentState, State>): Promise<void> {
+        ctx.commit('SET_ALL_SHIPMENTS');
     },
-    async setActiveItem(ctx: ActionContext<ItemState, State>, data: Item): Promise<void> {
-        ctx.commit('SET_ACTIVE_ITEM_LOADING', true);
+    async setActiveShipment(ctx: ActionContext<ShipmentState, State>, data: Shipment): Promise<void> {
+        ctx.commit('SET_ACTIVE_SHIPMENT_LOADING', true);
         setTimeout(() => {
-            ctx.commit('SET_ACTIVE_ITEM', data);
-            ctx.commit('SET_ACTIVE_ITEM_LOADING', false);
+            ctx.commit('SET_ACTIVE_SHIPMENT', data);
+            ctx.commit('SET_ACTIVE_SHIPMENT_LOADING', false);
         }, 300);
     },
 };

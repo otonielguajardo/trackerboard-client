@@ -1,13 +1,13 @@
 import { createStore } from 'vuex';
 
-import items, { ItemState } from './items';
+import shipments, { ShipmentState } from './shipments';
 
 export interface State {
-    items: ItemState;
+    shipments: ShipmentState;
 }
 
 export const store = createStore({
     modules: {
-        items,
+        shipments,
     },
 });

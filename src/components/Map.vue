@@ -100,7 +100,7 @@ export default defineComponent({
         };
     },
     computed: {
-        ...mapState('items', ['activeItem', 'activeItemLoading']),
+        ...mapState('items', ['activeShipment', 'activeShipmentLoading']),
     },
     async beforeMount() {
         // HERE is where to load Leaflet components!

@@ -1,0 +1,4 @@
+.navbar {
+    @apply px-3 sm:px-4 py-2 bg-white dark:bg-gray-900 flex justify-between items-center border-b border-gray-300 dark:border-gray-800;
+    transition: background-color 0.1s ease-out;
+}
