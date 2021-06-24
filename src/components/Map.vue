@@ -1,20 +1,24 @@
 <template>
     <div>
-        <div class="my-3 button-group">
-            <button :class="showMapBackground ? 'bg-white' : 'bg-gray-500'" @click="showMapBackground = true">
-                Galaxy
-            </button>
-            <button :class="!showMapBackground ? 'bg-white' : 'bg-gray-500'" @click="showMapBackground = false">
-                Map
-            </button>
-        </div>
+        <table>
+            <tr>
+                <td>Hide Stars</td>
+                <td><input type="checkbox" v-model="hideBackground" /></td>
+            </tr>
+            <tr>
+                <td>Follow Pilot</td>
+                <td>
+                    <input type="checkbox" v-model="followPilot" />
+                </td>
+            </tr>
+        </table>
 
         <LMap
             class="rounded-md bg-black"
             style="height:300px"
             ref="map"
             v-model:zoom="zoom"
-            :center="[height / 2, width / 2]"
+            :center="center"
             :minZoom="1"
             :maxZoom="5"
         >
@@ -22,11 +26,12 @@
             <LMarker
                 draggable
                 @mouseup="logCoordinates($event)"
+                @click="setActiveShipment(marker.data)"
                 v-for="(marker, idx) in pilots"
                 :key="idx"
                 :lat-lng="marker.coordinates"
             >
-                <LIcon :icon-url="marker.url" :icon-size="[zoom ** 2, zoom ** 2]"></LIcon>
+                <LIcon :icon-url="marker.url" :icon-size="[zoom ** 2.3, zoom ** 2.3]"></LIcon>
             </LMarker>
             <!-- planets -->
             <LMarker v-for="(marker, idx) in planets" :key="idx" :lat-lng="marker.coordinates">
@@ -34,7 +39,7 @@
                 <LPopup> {{ marker.name }} {{ marker.coordinates }} </LPopup>
             </LMarker>
             <!-- overlays -->
-            <LImageOverlay v-if="showMapBackground" url="/img/layouts/galaxy.png" :bounds="bounds" />
+            <LImageOverlay v-if="!hideBackground" url="/img/layouts/galaxy.png" :bounds="bounds" />
         </LMap>
     </div>
 </template>
@@ -47,6 +52,7 @@ import { LMap, LMarker, LImageOverlay, LPopup, LIcon } from '@vue-leaflet/vue-le
 import { Shipment } from '@/models/Shipment';
 import { Planet } from '@/models/Planet';
 import { Marker } from '@/models/Map';
+import { useStore } from 'vuex';
 
 export default defineComponent({
     name: 'Map',
@@ -58,20 +64,33 @@ export default defineComponent({
         LIcon,
     },
     setup() {
-        const geojson = ref({});
+        const store = useStore();
 
-        const showMapBackground = ref(true);
+        const geojson = ref({});
+        const followPilot = ref(true);
+        const hideBackground = ref(false);
         const width = ref(200);
         const height = ref(150);
-        const zoom = ref(2);
+        const zoom = ref(3);
         const bounds = computed(() => [
             [0, 0],
             [height.value, width.value],
         ]);
 
+        const center = computed(() => {
+            let defaultCenter = [height.value / 2, width.value / 2];
+            let activeShipment = store.state.shipments.activeShipment;
+            if (followPilot.value && activeShipment.coordinates) {
+                return activeShipment.coordinates;
+            }
+            return defaultCenter;
+        });
+
         return {
+            center,
+            followPilot,
             geojson,
-            showMapBackground,
+            hideBackground,
             width,
             height,
             zoom,
@@ -83,6 +102,9 @@ export default defineComponent({
         logCoordinates(event: any) {
             console.log(event.target._latlng);
         },
+        setActiveShipment(shipment: Shipment) {
+            this.$store.dispatch('shipments/setActiveShipment', shipment);
+        },
     },
     computed: {
         ...mapState('shipments', ['activeShipment', 'activeShipmentLoading']),
@@ -93,6 +115,7 @@ export default defineComponent({
                     .filter((shipment: Shipment) => shipment.coordinates)
                     .map((shipment: Shipment) => {
                         return {
+                            data: shipment,
                             coordinates: shipment.coordinates,
                             url: shipment.ship ? shipment.ship : null,
                         };

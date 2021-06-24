@@ -5,7 +5,15 @@
         "status": "red",
         "progress": 0
     },
-    { "stage": "Quotation", "pilot": "Chewie", "status": "orange", "progress": 0 },
+    {
+        "stage": "Quotation",
+        "pilot": "Chewie",
+        "status": "orange",
+        "progress": 0,
+        "src": "/img/characters/chewie.png",
+        "ship": "/img/ships/millennium_falcon.png",
+        "coordinates": { "lng": 80, "lat": 60 }
+    },
     { "stage": "Quotation", "pilot": "R2-D2", "status": "red", "progress": 0 },
     {
         "stage": "Position",
@@ -13,7 +21,8 @@
         "status": "green",
         "progress": 27,
         "src": "/img/characters/luke.png",
-        "ship": "/img/ships/xwing.png"
+        "ship": "/img/ships/x_wing.png",
+        "coordinates": { "lng": 60, "lat": 80 }
     },
     {
         "stage": "Position",
@@ -23,7 +32,15 @@
         "src": "/img/characters/greedo.png"
     },
     { "stage": "Position", "pilot": "Anakin", "status": "green", "progress": 17 },
-    { "stage": "Load", "pilot": "Han", "status": "red", "progress": 34 },
+    {
+        "stage": "Load",
+        "pilot": "Han",
+        "status": "red",
+        "progress": 34,
+        "src": "/img/characters/han.png",
+        "ship": "/img/ships/millennium_falcon.png",
+        "coordinates": { "lng": 81, "lat": 80 }
+    },
     { "stage": "Load", "pilot": "Leia", "status": "orange", "progress": 38 },
     { "stage": "Load", "pilot": "Darth Vader", "status": "green", "progress": 42 },
     { "stage": "Load", "pilot": "Obi Wan", "status": "red", "progress": 54 },
@@ -36,7 +53,15 @@
         "ship": "/img/ships/scimitar.png",
         "coordinates": { "lng": 95.65, "lat": 71.75 }
     },
-    { "stage": "Transit", "pilot": "Zebulba", "status": "green", "progress": 70 },
+    {
+        "stage": "Transit",
+        "pilot": "Din Djarin",
+        "status": "green",
+        "progress": 70,
+        "src": "/img/characters/din_djarin.png",
+        "ship": "/img/ships/razorcrest.png",
+        "coordinates": { "lng": 94, "lat": 64 }
+    },
     { "stage": "Download", "pilot": "C-3PO", "status": "orange", "progress": 82 },
     { "stage": "Download", "pilot": "Padme", "status": "orange", "progress": 69 },
     { "stage": "Download", "pilot": "Jabba", "status": "green", "progress": 98 },

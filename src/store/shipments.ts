@@ -1,4 +1,3 @@
-import { Coordinates } from '@/models/Map';
 import { Shipment } from '@/models/Shipment';
 import { ActionContext } from 'vuex';
 import { State } from './index';
@@ -22,26 +21,51 @@ const mutations = {
         let y = true;
         let x = true;
         setInterval(() => {
-            state.allShipments = state.allShipments.map(shipment => {
+            state.allShipments = state.allShipments.map((shipment, index) => {
                 if (shipment.coordinates) {
-                    shipment.coordinates = {
-                        lat: y ? shipment.coordinates.lat + 1 : shipment.coordinates.lat - 1,
-                        lng: x ? shipment.coordinates.lng + 1 : shipment.coordinates.lng - 1,
-                    };
+                    switch (index % 4) {
+                        case 0:
+                            shipment.coordinates = {
+                                lat: !y ? shipment.coordinates.lat + 0.5 : shipment.coordinates.lat - 0.5,
+                                lng: x ? shipment.coordinates.lng + 0.5 : shipment.coordinates.lng - 0.5,
+                            };
+                            break;
+
+                        case 1:
+                            shipment.coordinates = {
+                                lat: y ? shipment.coordinates.lat + 0.5 : shipment.coordinates.lat - 0.5,
+                                lng: !x ? shipment.coordinates.lng + 0.5 : shipment.coordinates.lng - 0.5,
+                            };
+                            break;
+
+                        case 2:
+                            shipment.coordinates = {
+                                lat: y ? shipment.coordinates.lat + 0.5 : shipment.coordinates.lat - 0.5,
+                                lng: x ? shipment.coordinates.lng + 0.5 : shipment.coordinates.lng - 0.5,
+                            };
+                            break;
+
+                        case 3:
+                            shipment.coordinates = {
+                                lat: !y ? shipment.coordinates.lat + 0.5 : shipment.coordinates.lat - 0.5,
+                                lng: !x ? shipment.coordinates.lng + 0.5 : shipment.coordinates.lng - 0.5,
+                            };
+                            break;
+                    }
                 }
                 return shipment;
             });
 
             y_counter = y ? y_counter + 1 : y_counter - 1;
-            if (y_counter == 10) y = false;
-            if (y_counter == -10) y = true;
+            if (y_counter == 20) y = false;
+            if (y_counter == -20) y = true;
 
             x_counter = x ? x_counter + 1 : x_counter - 1;
-            if (x_counter == 20) x = false;
-            if (x_counter == -20) x = true;
+            if (x_counter == 30) x = false;
+            if (x_counter == -30) x = true;
 
             console.log({ x_counter, y_counter, x, y });
-        }, 2000);
+        }, 3000);
     },
     SET_ALL_SHIPMENTS: (state: ShipmentState, data: Shipment[]): void => {
         state.allShipments = data;
