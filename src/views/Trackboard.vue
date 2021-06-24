@@ -39,15 +39,13 @@ export default defineComponent({
         ...mapState('shipments', {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             allStages: (state: any) => {
-                let data = _.chain(state.allShipments)
+                return _.chain(state.allShipments)
                     .groupBy('stage')
                     .map((value: Array<Shipment>, key: string) => ({
                         name: key,
                         shipments: value,
                     }))
                     .value();
-                console.log(data);
-                return data;
             },
         }),
     },
@@ -63,9 +61,3 @@ export default defineComponent({
     },
 });
 </script>
-
-<style lang="scss" scoped>
-#trackboard {
-    height: calc(100vh - 55px);
-}
-</style>

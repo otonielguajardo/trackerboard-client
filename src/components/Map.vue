@@ -22,7 +22,6 @@
         >
             <!-- ships -->
             <LMarker
-                @mouseup="logCoordinates($event)"
                 @click="setActiveShipment(marker.data)"
                 v-for="(marker, idx) in pilots"
                 :key="idx"
@@ -100,10 +99,6 @@ export default defineComponent({
         };
     },
     methods: {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        logCoordinates(event: any) {
-            console.log(event.target._latlng);
-        },
         setActiveShipment(shipment: Shipment) {
             this.$store.dispatch('shipments/setActiveShipment', shipment);
         },

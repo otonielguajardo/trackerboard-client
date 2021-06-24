@@ -64,7 +64,7 @@ const mutations = {
             if (x_counter == 30) x = false;
             if (x_counter == -30) x = true;
 
-            console.log({ x_counter, y_counter, x, y });
+            // console.log({ x_counter, y_counter, x, y });
         }, 3000);
     },
     SET_ALL_SHIPMENTS: (state: ShipmentState, data: Shipment[]): void => {

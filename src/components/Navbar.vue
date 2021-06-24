@@ -2,7 +2,7 @@
     <div class="navbar">
         <div class="sm:w-60 flex">
             <span class="mr-3">📦</span>
-            <span class="hidden sm:block"><strong>Track</strong>board</span>
+            <span class="hidden sm:block"><strong>Tracker</strong>board</span>
         </div>
         <div class="flex justify-end items-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
             <SearchInput></SearchInput>
