@@ -1,17 +1,15 @@
 <template>
     <div>
-        <table>
-            <tr>
-                <td>Hide Stars</td>
-                <td><input type="checkbox" v-model="hideBackground" /></td>
-            </tr>
-            <tr>
-                <td>Follow Pilot</td>
-                <td>
-                    <input type="checkbox" v-model="followPilot" />
-                </td>
-            </tr>
-        </table>
+        <div class="flex justify-between py-3">
+            <div>
+                <span class="mr-2">Follow Pilot</span>
+                <input type="checkbox" v-model="followPilot" />
+            </div>
+            <div>
+                <span class="mr-2">Hide Stars</span>
+                <input type="checkbox" v-model="hideBackground" />
+            </div>
+        </div>
 
         <LMap
             class="rounded-md bg-black"
@@ -24,7 +22,6 @@
         >
             <!-- ships -->
             <LMarker
-                draggable
                 @mouseup="logCoordinates($event)"
                 @click="setActiveShipment(marker.data)"
                 v-for="(marker, idx) in pilots"
@@ -34,9 +31,14 @@
                 <LIcon :icon-url="marker.url" :icon-size="[zoom ** 2.3, zoom ** 2.3]"></LIcon>
             </LMarker>
             <!-- planets -->
-            <LMarker v-for="(marker, idx) in planets" :key="idx" :lat-lng="marker.coordinates">
+            <LMarker
+                @click="center = marker.coordinates"
+                v-for="(marker, idx) in planets"
+                :key="idx"
+                :lat-lng="marker.coordinates"
+            >
                 <LIcon :icon-url="marker.url" :icon-size="[zoom ** 3.3, zoom ** 3.3]"></LIcon>
-                <LPopup> {{ marker.name }} {{ marker.coordinates }} </LPopup>
+                <LPopup>{{ '{' + marker.data.name + '}' }} </LPopup>
             </LMarker>
             <!-- overlays -->
             <LImageOverlay v-if="!hideBackground" url="/img/layouts/galaxy.png" :bounds="bounds" />
@@ -131,6 +133,7 @@ export default defineComponent({
                         return {
                             coordinates: planet.coordinates,
                             url: planet.src ? planet.src : null,
+                            data: planet,
                         };
                     });
             },
