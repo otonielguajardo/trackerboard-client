@@ -1,4 +1,6 @@
-# trackboard
+# trackerboard
+
+Follow pilots around the galaxy
 
 ## Project setup
 ```
