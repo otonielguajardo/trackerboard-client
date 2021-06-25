@@ -12,7 +12,7 @@
             </div>
             <div>
                 <p>{{ activeShipment.pilot }}</p>
-                <p>Progress: {{ activeShipment.progress }}</p>
+                <p>Progress: {{ activeShipment.progress.toFixed(2) }}</p>
                 <p>Stage: {{ activeShipment.stage }}</p>
             </div>
         </div>

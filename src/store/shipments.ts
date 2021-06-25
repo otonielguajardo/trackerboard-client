@@ -75,7 +75,7 @@ const mutations = {
                     }
 
                     // set new progress
-                    const newProgress = shipment.progress + rnd(1, 2);
+                    const newProgress = shipment.progress + rnd(0.01, 1);
                     // const newProgress = shipment.progress + 1;
                     shipment.progress = newProgress > 100 ? 0 : newProgress;
 
