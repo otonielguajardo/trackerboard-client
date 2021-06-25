@@ -11,7 +11,9 @@
                 />
             </div>
             <div>
-                {{ activeShipment.pilot }}
+                <p>{{ activeShipment.pilot }}</p>
+                <p>Progress: {{ activeShipment.progress }}</p>
+                <p>Stage: {{ activeShipment.stage }}</p>
             </div>
         </div>
     </div>

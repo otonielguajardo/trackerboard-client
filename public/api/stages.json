@@ -1,0 +1,7 @@
+[
+    { "sort": 1, "name": "Quotation" },
+    { "sort": 2, "name": "Position" },
+    { "sort": 3, "name": "Load" },
+    { "sort": 4, "name": "Transit" },
+    { "sort": 5, "name": "Download" }
+]

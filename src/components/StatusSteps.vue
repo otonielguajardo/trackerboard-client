@@ -7,8 +7,10 @@
                         ? 'bg-blue-500'
                         : 'bg-transparent border border-gray-200 dark:border-gray-800'
                 "
-                class="w-5 h-5 rounded-full text-lg text-white flex items-center transition-colors"
-            ></div>
+                class="w-5 h-5 rounded-full text-lg text-white items-center transition-colors flex justify-center "
+            >
+                <span class="opacity-30 text-xs">{{ (100 / stages.length) * si }}</span>
+            </div>
             <div class="w-1/12 align-center items-center align-middle content-center flex">
                 <div
                     class="w-full rounded items-center align-middle align-center flex-1 border border-gray-200 dark:border-gray-800"

@@ -39,13 +39,16 @@ export default defineComponent({
         ...mapState('shipments', {
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             allStages: (state: any) => {
-                return _.chain(state.allShipments)
+                const s = _.chain(state.allShipments)
                     .groupBy('stage')
                     .map((value: Array<Shipment>, key: string) => ({
                         name: key,
+                        sort: value[0].stageSort,
                         shipments: value,
                     }))
                     .value();
+
+                return _.sortBy(s, 'sort');
             },
         }),
     },
