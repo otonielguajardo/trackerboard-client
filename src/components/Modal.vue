@@ -9,7 +9,7 @@
         <transition name="slide" appear>
             <div v-if="showComponent" class="modal-container">
                 <div class="modal-panel" v-if="showComponent">
-                    <div class="flex justify-between mb-3">
+                    <div class="flex justify-between mb-3 select-none">
                         {{ activeShipment.pilot.name }}
                         <button class="px-3 py-1 rounded-md bg-blue-500 text-white" @click="onClose()">
                             X

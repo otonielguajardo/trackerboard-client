@@ -2,11 +2,11 @@
     <div>
         <div class="flex justify-between py-3">
             <div>
-                <span class="mr-2">Follow Pilot</span>
+                <span class="mr-2 select-none">Follow Pilot</span>
                 <input type="checkbox" v-model="followPilot" />
             </div>
             <div>
-                <span class="mr-2">Hide Stars</span>
+                <span class="mr-2 select-none">Hide Stars</span>
                 <input type="checkbox" v-model="hideBackground" />
             </div>
         </div>

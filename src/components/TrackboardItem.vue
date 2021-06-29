@@ -10,7 +10,7 @@
         ></div>
         <div class="bg-white dark:bg-gray-900 p-3 rounded-l-none rounded-md mr-3 flex-grow">
             <!-- <p>{{ shipment.id }}</p> -->
-            <p>{{ shipment.pilot.name }}</p>
+            <p class="select-none">{{ shipment.pilot.name }}</p>
         </div>
     </div>
 </template>
