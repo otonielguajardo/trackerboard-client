@@ -1,0 +1,67 @@
+[
+    {
+        "name": "Han and Chewie",
+        "src": "/img/characters/han_and_chewie.png",
+        "ship": { "src": "/img/ships/millennium_falcon.png", "name": "Millenium Falcon" }
+    },
+    {
+        "name": "Luke",
+        "src": "/img/characters/luke.png",
+        "ship": { "src": "/img/ships/x_wing.png", "name": "X-Wing" }
+    },
+    {
+        "name": "Greedo",
+        "src": "/img/characters/greedo.png",
+        "ship": { "src": "/img/ships/mon_calamari.png", "name": "Mon Calamari" }
+    },
+    {
+        "name": "Admiral Ackbar",
+        "src": "/img/characters/admiarl_ackbar.png",
+        "ship": { "src": "/img/ships/mon_calamari.png", "name": "Mon Calamari" }
+    },
+    {
+        "name": "Darth Vader",
+        "src": "/img/characters/darth_vader.png",
+        "ship": { "src": "/img/ships/tie_advanced.png", "name": "TIE Advanced" }
+    },
+    {
+        "name": "Obi Wan",
+        "src": "/img/characters/obi_wan.png",
+        "ship": { "src": "/img/ships/jedi_starfigher.png", "name": "Jedi Starfighter" }
+    },
+    {
+        "name": "Darth Maul",
+        "src": "/img/characters/darth_maul.png",
+        "ship": { "src": "/img/ships/scimitar.png", "name": "Scimitar" }
+    },
+    {
+        "name": "Din Djarin",
+        "src": "/img/characters/din_djarin.png",
+        "ship": { "src": "/img/ships/razorcrest.png", "name": "Razor Crest" }
+    },
+    {
+        "name": "C-3PO and R2",
+        "src": "/img/characters/c_3po_and_r2.png",
+        "ship": { "src": "/img/ships/scape_pod.png", "name": "Escape Pod" }
+    },
+    {
+        "name": "Padme",
+        "src": "/img/characters/padme.png",
+        "ship": { "src": "/img/ships/royal_ship.png", "name": "Naboo Royal Ship" }
+    },
+    {
+        "name": "Leia",
+        "src": "/img/characters/leia.png",
+        "ship": { "src": "/img/ships/corellian_corvette.png", "name": "Corellian Corvette" }
+    },
+    {
+        "name": "Boba Fett",
+        "src": "/img/characters/boba_fett.png",
+        "ship": { "src": "/img/ships/slave_1.png", "name": "Slave 1" }
+    },
+    {
+        "name": "Panaka",
+        "src": "/img/characters/darth_maul.png",
+        "ship": { "src": "/img/ships/scimitar.png", "name": "" }
+    }
+]

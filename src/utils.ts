@@ -1,5 +1,6 @@
-export const rnd = (min: number, max: number): number => {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+export const rnd = (min: number, max: number, floor = false): number => {
+    const x = Math.random() * (max - min + 1);
+    return floor ? Math.floor(x) + min : x + min;
 };
 
 export const asyncForEach = async (array: Array<any>, callback: any): Promise<any> => {
