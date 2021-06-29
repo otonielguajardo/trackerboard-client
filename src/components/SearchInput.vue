@@ -1,6 +1,6 @@
 <template>
     <div
-        :class="search != '' ? 'w-full' : 'w-10'"
+        :class="queryText != '' ? 'w-full' : 'w-10'"
         class="transition-all border dark:border-gray-700 border-gray-300 rounded-full grid overflow-hidden"
     >
         <div class="p-2 col-start-1 col-end-2 row-start-1 text-gray-400 row-end-2 place-self-start z-10">
@@ -13,9 +13,9 @@
             </svg>
         </div>
         <div
-            :class="search != '' ? 'z-10 text-gray-400 animate-spin-in' : 'text-transparent animate-spin-out'"
+            :class="queryText != '' ? 'z-10 text-gray-400 animate-spin-in' : 'text-transparent animate-spin-out'"
             class="p-2 col-start-1 col-end-2 row-start-1 row-end-2 cursor-pointer transition-all place-self-end"
-            @click="search = ''"
+            @click="queryText = ''"
         >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path
@@ -26,22 +26,34 @@
             </svg>
         </div>
         <input
-            :class="search != '' ? 'px-9 ' : 'cursor-pointer z-10 text-transparent'"
-            @click="search == '' ? (search = ' ') : ''"
-            v-model="search"
+            :class="queryText != '' ? 'px-9 ' : 'cursor-pointer z-10 text-transparent'"
+            @click="queryText == '' ? (queryText = ' ') : ''"
+            @keyup.enter="$event.target.blur()"
+            v-model="queryText"
             class="col-start-1 col-end-2 row-start-1 row-end-2 w-full px-4 py-2 text-sm bg-transparent"
         />
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { computed, defineComponent, WritableComputedRef } from 'vue';
+import { useStore } from 'vuex';
 
 export default defineComponent({
     name: 'SearchInput',
     setup() {
-        const search = ref('');
-        return { search };
+        const store = useStore();
+
+        const queryText: WritableComputedRef<string> = computed({
+            get(): string {
+                return store.state.shipments.queryText;
+            },
+            set(val: string): void {
+                store.state.shipments.queryText = val;
+            },
+        });
+
+        return { queryText };
     },
 });
 </script>

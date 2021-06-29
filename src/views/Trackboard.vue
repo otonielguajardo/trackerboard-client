@@ -33,8 +33,24 @@ export default defineComponent({
     name: 'Trackboard',
     setup() {
         const store = useStore();
+
+        const queryText = computed(() => store.state.shipments.queryText);
+
         const allStages = computed(() => {
-            const items = _.chain(store.state.shipments.allShipments)
+            //
+            const allShipments = store.state.shipments.allShipments.filter((s: Shipment) => {
+                if (queryText.value != '' && queryText.value != ' ') {
+                    return (
+                        s.pilot.name.includes(queryText.value.trim()) ||
+                        s.pilot.name.toLowerCase().includes(queryText.value.trim()) ||
+                        s.pilot.name.toUpperCase().includes(queryText.value.trim())
+                    );
+                } else {
+                    return true;
+                }
+            });
+
+            const allStages = _.chain(allShipments)
                 .groupBy('stage')
                 .map((value: Array<Shipment>, key: string) => ({
                     name: key,
@@ -43,13 +59,13 @@ export default defineComponent({
                 }))
                 .value();
 
-            return _.sortBy(items, 'sort');
+            return _.sortBy(allStages, 'sort');
         });
 
         const onSelectShipment = (id: string | null) => {
             store.dispatch('shipments/setActiveShipmentId', id);
         };
-        return { allStages, onSelectShipment };
+        return { queryText, allStages, onSelectShipment };
     },
     mounted() {
         this.$store.dispatch('shipments/fetchAllShipments');

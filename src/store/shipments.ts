@@ -13,6 +13,7 @@ import { v4 as uuidv4 } from 'uuid';
 const refreshRate = 3000;
 
 export interface ShipmentState {
+    queryText: string;
     allShipments: Array<Shipment>;
     allStages: Array<Stage>;
     activeShipmentId: string | null;
@@ -20,6 +21,7 @@ export interface ShipmentState {
 }
 
 const state: ShipmentState = {
+    queryText: '',
     allShipments: [],
     allStages: [],
     activeShipmentId: null,
@@ -31,8 +33,6 @@ const mutations = {
         state.allStages = data;
     },
     SET_ALL_SHIPMENTS: (state: ShipmentState, { allPilots, allStages }: any): void => {
-        // state.allShipments = data;
-
         // init shipments
         const allShipments = allPilots.map(
             (pilot: Pilot): Shipment => {

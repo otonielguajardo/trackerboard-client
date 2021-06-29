@@ -14,19 +14,21 @@
 * {
     -webkit-tap-highlight-color: transparent;
     outline: none;
-    // &:focus-visible {
-    // }
 }
 
 body {
     #app {
         font-family: 'Rubik', sans-serif;
     }
-}
-body.dark {
-    #app {
-        font-family: 'Aurebesh';
-        @apply text-gray-50 text-sm;
+    &.dark {
+        #app {
+            @apply text-gray-50 text-sm;
+        }
+    }
+    &.aurebesh {
+        #app {
+            font-family: 'Aurebesh';
+        }
     }
 }
 
