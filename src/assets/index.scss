@@ -22,12 +22,13 @@ body {
     }
     &.dark {
         #app {
-            @apply text-gray-50 text-sm;
+            @apply text-gray-50;
         }
     }
     &.aurebesh {
         #app {
             font-family: 'Aurebesh';
+            @apply text-sm;
         }
     }
 }

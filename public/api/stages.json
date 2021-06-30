@@ -1,11 +1,10 @@
 [
     {
         "sort": 1,
-
-        "name": "Quotation",
+        "name": "Alpha",
         "status": {
-            "textGood": "Quoting",
-            "textBad": "Been quoting",
+            "textGood": "",
+            "textBad": "",
             "unit": "m",
             "modifier": "after",
             "digit": 1
@@ -13,10 +12,10 @@
     },
     {
         "sort": 2,
-        "name": "Pre Transit",
+        "name": "Beta",
         "status": {
-            "textGood": "Arrived",
-            "textBad": "Has to arrive",
+            "textGood": "",
+            "textBad": "",
             "unit": "m",
             "modifier": "after",
             "digit": 1
@@ -24,10 +23,10 @@
     },
     {
         "sort": 3,
-        "name": "Load",
+        "name": "Gamma",
         "status": {
-            "textGood": "Loading",
-            "textBad": "Must've loaded ",
+            "textGood": "",
+            "textBad": "",
             "unit": "m",
             "modifier": "after",
             "digit": 1
@@ -35,10 +34,10 @@
     },
     {
         "sort": 4,
-        "name": "Transit",
+        "name": "Delta",
         "status": {
-            "textGood": "Arriving",
-            "textBad": "Must've arrived",
+            "textGood": "",
+            "textBad": "",
             "unit": "m",
             "modifier": "after",
             "digit": 1
@@ -46,11 +45,11 @@
     },
     {
         "sort": 5,
-        "name": "Download",
+        "name": "Omega",
         "status": {
-            "textGood": "Downloading",
-            "textBad": "Been downloading",
-            "unit": "m",
+            "textGood": "",
+            "textBad": "",
+            "unit": "",
             "modifier": "after",
             "digit": 1
         }
