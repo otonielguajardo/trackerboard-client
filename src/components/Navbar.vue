@@ -4,9 +4,6 @@
             <span class="mr-2">📦</span>
             <span class="hidden sm:block"><strong>Tracker</strong>board</span>
         </div>
-        <div>
-            {{ clock }}
-        </div>
         <div class="flex justify-end items-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
             <SearchInput></SearchInput>
             <div class="ml-3 h-9 cursor-pointer" @click="toggleTheme()">
