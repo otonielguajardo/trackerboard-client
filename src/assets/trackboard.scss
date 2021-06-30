@@ -4,4 +4,13 @@
     .stage {
         @apply bg-gray-200 dark:bg-gray-700 pl-3 rounded-md w-52 h-full overflow-y-hidden;
     }
+    .card {
+        @apply flex cursor-pointer;
+        &-status {
+            @apply rounded-r-none rounded-md w-2 transition-colors duration-700;
+        }
+        &-content {
+            @apply bg-white dark:bg-gray-900 px-2 py-1 rounded-l-none rounded-md mr-3 flex-grow select-none;
+        }
+    }
 }

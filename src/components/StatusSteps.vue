@@ -49,11 +49,13 @@ export default defineComponent({
     name: 'StatusSteps',
     setup() {
         const store = useStore();
+
         const allStages = computed(() => store.state.stages.allStages);
         const activeShipmentLoading = computed(() => store.state.shipments.activeShipmentLoading);
         const activeShipment = computed(() =>
             _.find(store.state.shipments.allShipments, { id: store.state.shipments.activeShipmentId })
         );
+
         return { allStages, activeShipment, activeShipmentLoading };
     },
 });

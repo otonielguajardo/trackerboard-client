@@ -15,6 +15,11 @@
         "ship": { "src": "/img/ships/mon_calamari.png", "name": "Mon Calamari" }
     },
     {
+        "name": "R0-GR",
+        "src": "/img/characters/battle_droid.png",
+        "ship": { "src": "/img/ships/droid_starfighter.png", "name": "Droid Starfighter" }
+    },
+    {
         "name": "Admiral Ackbar",
         "src": "/img/characters/admiral_ackbar.png",
         "ship": { "src": "/img/ships/mon_calamari.png", "name": "Mon Calamari" }

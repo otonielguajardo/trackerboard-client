@@ -37,6 +37,7 @@ export default defineComponent({
     },
     setup() {
         const store = useStore();
+
         const activeShipmentLoading = computed(() => store.state.shipments.activeShipmentLoading);
         const activeShipment = computed(() =>
             _.find(store.state.shipments.allShipments, { id: store.state.shipments.activeShipmentId })

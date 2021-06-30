@@ -1,5 +1,5 @@
 <template>
-    <div class="flex cursor-pointer">
+    <div class="card">
         <div
             :class="{
                 'bg-red-500': status.class == 'danger',
@@ -7,9 +7,9 @@
                 'bg-green-500': status.class == 'good',
                 'bg-gray-300': status.class == 'loading',
             }"
-            class="rounded-r-none rounded-md w-2 transition-colors duration-700"
+            class="card-status"
         ></div>
-        <div class="bg-white dark:bg-gray-900 px-2 py-1 rounded-l-none rounded-md mr-3 flex-grow select-none">
+        <div class="card-content">
             <!-- <p>{{ shipment.id }}</p> -->
             <div class="flex justify-between">
                 <span>{{ thisShipment.pilot.name }}</span>
@@ -34,19 +34,13 @@ import { Stage } from '@/models/Stage';
 export default defineComponent({
     name: 'TrackboardItem',
     props: {
-        shipmentId: {
-            required: true,
-            type: String,
-        },
+        shipmentId: { required: true, type: String },
     },
     setup(props) {
-        //
         const store = useStore();
 
         const thisShipment = computed(() => _.find(store.state.shipments.allShipments, { id: props.shipmentId }));
-
         const clock = computed(() => store.state.app.clock);
-
         const status = ref({
             class: 'loading',
             date: '...',
@@ -54,7 +48,6 @@ export default defineComponent({
         });
 
         watch(clock, () => {
-            //
             const stage: Stage = _.find(store.state.stages.allStages, { name: thisShipment.value.stage });
 
             // if (stage.status.modifier == 'before') {
@@ -82,7 +75,6 @@ export default defineComponent({
 
             if (stage.status.modifier == 'after') {
                 switch (true) {
-                    // red
                     case moment(clock.value) >=
                         moment(thisShipment.value.stageSince).add(stage.status.digit, stage.status.unit):
                         status.value.class = 'danger';

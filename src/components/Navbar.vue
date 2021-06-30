@@ -27,16 +27,12 @@ export default defineComponent({
         const store = useStore();
 
         const clock = computed(() => moment(store.state.app.clock).format('hh:mm:ss A'));
-
-        const toggleTheme = () => {
-            store.dispatch('app/toggleTheme');
-        };
-        const toggleLanguage = () => {
-            store.dispatch('app/toggleLanguage');
-        };
         const theme = computed(() => store.state.app.theme);
         const language = computed(() => store.state.app.language);
         const queryText = computed(() => store.state.shipments.queryText);
+
+        const toggleTheme = () => store.dispatch('app/toggleTheme');
+        const toggleLanguage = () => store.dispatch('app/toggleLanguage');
 
         return { clock, queryText, theme, language, toggleTheme, toggleLanguage };
     },

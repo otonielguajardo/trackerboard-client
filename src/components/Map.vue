@@ -78,11 +78,10 @@ export default defineComponent({
         );
 
         const center = computed(() => {
-            let defaultCenter = { lat: height.value / 2, lng: width.value / 2 };
             if (followPilot.value && activeShipment.value.coordinates) {
                 return activeShipment.value.coordinates;
             }
-            return defaultCenter;
+            return { lat: height.value / 2, lng: width.value / 2 };
         });
 
         const pilots = computed(() => {

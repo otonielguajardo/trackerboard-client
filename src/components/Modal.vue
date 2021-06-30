@@ -1,8 +1,5 @@
 <template>
     <div class="modal" v-if="renderComponent">
-        <!-- <transition name="fade" appear>
-            <div v-if="activeShipmentLoading" class="modal-loading"></div>
-        </transition> -->
         <transition name="fade" appear>
             <div v-if="showComponent" @click="onClose()" class="modal-overlay"></div>
         </transition>
@@ -32,7 +29,6 @@ export default defineComponent({
     components: { TrackboardDetail },
     name: 'Modal',
     setup() {
-        // vuex
         const store = useStore();
         const activeShipmentLoading = computed(() => store.state.shipments.activeShipmentLoading);
         const activeShipment = computed(
