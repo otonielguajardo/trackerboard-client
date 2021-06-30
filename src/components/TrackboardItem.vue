@@ -2,51 +2,111 @@
     <div class="flex cursor-pointer">
         <div
             :class="{
-                'bg-red-500': status == 'alert',
-                'bg-yellow-500': status == 'warning',
-                'bg-green-500': status == 'good',
+                'bg-red-500': status.class == 'danger',
+                'bg-yellow-500': status.class == 'warning',
+                'bg-green-500': status.class == 'good',
+                'bg-gray-300': status.class == 'loading',
             }"
-            class="rounded-r-none rounded-md w-2 transition-colors"
+            class="rounded-r-none rounded-md w-2 transition-colors duration-700"
         ></div>
-        <div class="bg-white dark:bg-gray-900 p-3 rounded-l-none rounded-md mr-3 flex-grow">
+        <div class="bg-white dark:bg-gray-900 px-2 py-1 rounded-l-none rounded-md mr-3 flex-grow select-none">
             <!-- <p>{{ shipment.id }}</p> -->
-            <p class="select-none">{{ shipment.pilot.name }}</p>
+            <div class="flex justify-between">
+                <span>{{ thisShipment.pilot.name }}</span>
+                <span class="text-gray-400">
+                    <small> {{ thisShipment.progress.toFixed() }}% </small>
+                </span>
+            </div>
+            <p class="select-none text-center">
+                <small>{{ status.date }}</small>
+            </p>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { rnd } from '@/utils';
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, ref, watch } from 'vue';
+import moment from 'moment';
+import _ from 'lodash';
+import { useStore } from 'vuex';
+import { Stage } from '@/models/Stage';
 
 export default defineComponent({
     name: 'TrackboardItem',
     props: {
-        shipment: {
+        shipmentId: {
             required: true,
-            type: Object,
+            type: String,
         },
     },
     setup(props) {
-        const status = computed(() => {
-            // let status;
-            let allStatuses = ['good', 'warning', 'alert'];
-            switch (props.shipment.stage) {
-                // case 'quotation':
-                //     break;
+        //
+        const store = useStore();
 
-                // case 'position':
-                //     break;
+        const thisShipment = computed(() => _.find(store.state.shipments.allShipments, { id: props.shipmentId }));
 
-                // case 'transit':
-                //     break;
+        const clock = computed(() => store.state.app.clock);
 
-                default:
-                    break;
-            }
-            return allStatuses[rnd(0, 2, true)];
+        const status = ref({
+            class: 'loading',
+            date: '...',
+            text: '...',
         });
-        return { status };
+
+        watch(clock, () => {
+            //
+            const stage: Stage = _.find(store.state.stages.allStages, { name: thisShipment.value.stage });
+
+            // if (stage.status.modifier == 'before') {
+            //     //
+            //     switch (true) {
+            //         case moment(clock.value) <
+            //             moment(thisShipment.value.stageSince).subtract(stage.status.digit / 2, stage.status.unit):
+            //             status.value.class = 'good';
+            //             status.value.text = stage.status.textGood;
+            //             break;
+
+            //         case moment(clock.value) >=
+            //             moment(thisShipment.value.stageSince).subtract(stage.status.digit / 2, stage.status.unit) &&
+            //             moment(clock.value) < moment(thisShipment.value.stageSince).subtract(0, stage.status.unit):
+            //             status.value.class = 'warning';
+            //             status.value.text = stage.status.textGood;
+            //             break;
+
+            //         default:
+            //             status.value.class = 'danger';
+            //             status.value.text = stage.status.textBad;
+            //             break;
+            //     }
+            // }
+
+            if (stage.status.modifier == 'after') {
+                switch (true) {
+                    // red
+                    case moment(clock.value) >=
+                        moment(thisShipment.value.stageSince).add(stage.status.digit, stage.status.unit):
+                        status.value.class = 'danger';
+                        status.value.text = stage.status.textBad;
+                        break;
+
+                    case moment(clock.value) >=
+                        moment(thisShipment.value.stageSince).add(stage.status.digit / 2, stage.status.unit) &&
+                        moment(clock.value) <
+                            moment(thisShipment.value.stageSince).add(stage.status.digit, stage.status.unit):
+                        status.value.class = 'warning';
+                        status.value.text = stage.status.textBad;
+                        break;
+
+                    default:
+                        status.value.class = 'good';
+                        status.value.text = stage.status.textGood;
+                        break;
+                }
+                status.value.date = moment(thisShipment.value.stageSince).fromNow();
+            }
+        });
+
+        return { thisShipment, status };
     },
 });
 </script>

@@ -1,7 +1,58 @@
 [
-    { "sort": 1, "name": "Quotation" },
-    { "sort": 2, "name": "Position" },
-    { "sort": 3, "name": "Load" },
-    { "sort": 4, "name": "Transit" },
-    { "sort": 5, "name": "Download" }
+    {
+        "sort": 1,
+
+        "name": "Quotation",
+        "status": {
+            "textGood": "Quoting",
+            "textBad": "Been quoting",
+            "unit": "m",
+            "modifier": "after",
+            "digit": 1
+        }
+    },
+    {
+        "sort": 2,
+        "name": "Pre Transit",
+        "status": {
+            "textGood": "Arrived",
+            "textBad": "Has to arrive",
+            "unit": "m",
+            "modifier": "after",
+            "digit": 1
+        }
+    },
+    {
+        "sort": 3,
+        "name": "Load",
+        "status": {
+            "textGood": "Loading",
+            "textBad": "Must've loaded ",
+            "unit": "m",
+            "modifier": "after",
+            "digit": 1
+        }
+    },
+    {
+        "sort": 4,
+        "name": "Transit",
+        "status": {
+            "textGood": "Arriving",
+            "textBad": "Must've arrived",
+            "unit": "m",
+            "modifier": "after",
+            "digit": 1
+        }
+    },
+    {
+        "sort": 5,
+        "name": "Download",
+        "status": {
+            "textGood": "Downloading",
+            "textBad": "Been downloading",
+            "unit": "m",
+            "modifier": "after",
+            "digit": 1
+        }
+    }
 ]

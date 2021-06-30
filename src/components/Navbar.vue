@@ -4,6 +4,9 @@
             <span class="mr-2">📦</span>
             <span class="hidden sm:block"><strong>Tracker</strong>board</span>
         </div>
+        <div>
+            {{ clock }}
+        </div>
         <div class="flex justify-end items-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4">
             <SearchInput></SearchInput>
             <div class="ml-3 h-9 cursor-pointer" @click="toggleTheme()">
@@ -15,6 +18,7 @@
 </template>
 
 <script lang="ts">
+import moment from 'moment';
 import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
 import SearchInput from './SearchInput.vue';
@@ -24,6 +28,9 @@ export default defineComponent({
     name: 'Navbar',
     setup() {
         const store = useStore();
+
+        const clock = computed(() => moment(store.state.app.clock).format('hh:mm:ss A'));
+
         const toggleTheme = () => {
             store.dispatch('app/toggleTheme');
         };
@@ -34,7 +41,7 @@ export default defineComponent({
         const language = computed(() => store.state.app.language);
         const queryText = computed(() => store.state.shipments.queryText);
 
-        return { queryText, theme, language, toggleTheme, toggleLanguage };
+        return { clock, queryText, theme, language, toggleTheme, toggleLanguage };
     },
 });
 </script>

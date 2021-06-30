@@ -10,11 +10,12 @@ import _ from 'lodash';
 import moment from 'moment';
 import { v4 as uuidv4 } from 'uuid';
 
-const refreshRate = 3000;
+const refreshRate = 2000;
 
 export interface ShipmentState {
     queryText: string;
     allShipments: Array<Shipment>;
+    allShipmentsInterval: any;
     allStages: Array<Stage>;
     activeShipmentId: string | null;
     activeShipmentLoading: boolean;
@@ -23,6 +24,7 @@ export interface ShipmentState {
 const state: ShipmentState = {
     queryText: '',
     allShipments: [],
+    allShipmentsInterval: null,
     allStages: [],
     activeShipmentId: null,
     activeShipmentLoading: false,
@@ -32,8 +34,10 @@ const mutations = {
     SET_ALL_STAGES: (state: ShipmentState, data: Stage[]): void => {
         state.allStages = data;
     },
-    SET_ALL_SHIPMENTS: (state: ShipmentState, { allPilots, allStages }: any): void => {
-        // init shipments
+    LOOP_ALL_SHIPMENTS: (state: ShipmentState, { allPilots, allStages }: any): void => {
+        //
+        clearInterval(state.allShipmentsInterval);
+
         const allShipments = allPilots.map(
             (pilot: Pilot): Shipment => {
                 const progress = rnd(0, 100);
@@ -45,6 +49,7 @@ const mutations = {
                     coordinates,
                     stage: '',
                     status: '',
+                    stageSince: moment().format(),
                 };
             }
         );
@@ -53,55 +58,60 @@ const mutations = {
         let x_counter = 0;
         let y = true;
         let x = true;
-        setInterval(async () => {
+
+        state.allShipmentsInterval = setInterval(async () => {
             state.allShipments = await Promise.all(
                 allShipments.map(async (shipment: Shipment, index: number) => {
                     // move around
+                    const mvmntMod = 0.05;
                     if (shipment.coordinates) {
                         switch (index % 4) {
                             case 0:
                                 shipment.coordinates = {
-                                    lat: !y ? shipment.coordinates.lat + 0.5 : shipment.coordinates.lat - 0.5,
-                                    lng: x ? shipment.coordinates.lng + 0.5 : shipment.coordinates.lng - 0.5,
+                                    lat: !y ? shipment.coordinates.lat + mvmntMod : shipment.coordinates.lat - 0.5,
+                                    lng: x ? shipment.coordinates.lng + mvmntMod : shipment.coordinates.lng - mvmntMod,
                                 };
                                 break;
 
                             case 1:
                                 shipment.coordinates = {
-                                    lat: y ? shipment.coordinates.lat + 0.5 : shipment.coordinates.lat - 0.5,
-                                    lng: !x ? shipment.coordinates.lng + 0.5 : shipment.coordinates.lng - 0.5,
+                                    lat: y ? shipment.coordinates.lat + mvmntMod : shipment.coordinates.lat - mvmntMod,
+                                    lng: !x ? shipment.coordinates.lng + mvmntMod : shipment.coordinates.lng - mvmntMod,
                                 };
                                 break;
 
                             case 2:
                                 shipment.coordinates = {
-                                    lat: y ? shipment.coordinates.lat + 0.5 : shipment.coordinates.lat - 0.5,
-                                    lng: x ? shipment.coordinates.lng + 0.5 : shipment.coordinates.lng - 0.5,
+                                    lat: y ? shipment.coordinates.lat + mvmntMod : shipment.coordinates.lat - mvmntMod,
+                                    lng: x ? shipment.coordinates.lng + mvmntMod : shipment.coordinates.lng - mvmntMod,
                                 };
                                 break;
 
                             case 3:
                                 shipment.coordinates = {
-                                    lat: !y ? shipment.coordinates.lat + 0.5 : shipment.coordinates.lat - 0.5,
-                                    lng: !x ? shipment.coordinates.lng + 0.5 : shipment.coordinates.lng - 0.5,
+                                    lat: !y ? shipment.coordinates.lat + mvmntMod : shipment.coordinates.lat - mvmntMod,
+                                    lng: !x ? shipment.coordinates.lng + mvmntMod : shipment.coordinates.lng - mvmntMod,
                                 };
                                 break;
                         }
                     }
 
                     // set new progress
-                    const newProgress = shipment.progress + rnd(0.01, 0.09);
+                    const newProgress = shipment.progress + rnd(0.01, 0.03);
                     // const newProgress = shipment.progress + 1;
                     shipment.progress = newProgress > 100 ? 0 : newProgress;
 
                     // set stage
+                    const lastStage = shipment.stage;
                     await asyncForEach(_.sortBy(allStages, 'sort'), (stage: Stage, index: number) => {
                         if (shipment.progress >= (100 / allStages.length) * index) {
                             shipment.stage = stage.name;
                             shipment.stageSort = stage.sort;
-                            shipment.stageSince = moment().format();
                         }
                     });
+                    if (lastStage != shipment.stage) {
+                        shipment.stageSince = moment().format();
+                    }
 
                     return shipment;
                 })
@@ -129,7 +139,7 @@ const actions = {
         //
         const allStages = await fetch('api/stages.json').then(res => res.json());
         const allPilots = await fetch('api/pilots.json').then(res => res.json());
-        ctx.commit('SET_ALL_SHIPMENTS', { allStages, allPilots });
+        ctx.commit('LOOP_ALL_SHIPMENTS', { allStages, allPilots });
     },
     async setActiveShipmentId(ctx: ActionContext<ShipmentState, State>, id: string | null): Promise<void> {
         ctx.commit('SET_ACTIVE_SHIPMENT_LOADING', true);

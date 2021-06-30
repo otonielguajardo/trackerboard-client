@@ -4,10 +4,14 @@
         <div class="flex justify-between">
             <div id="trackboard">
                 <div class="stage" v-for="(stage, si) in allStages" :key="si">
-                    <div class="py-2">{{ stage.name }}</div>
+                    <div class="py-2 text-center uppercase ">
+                        <small>
+                            {{ stage.name }}
+                        </small>
+                    </div>
                     <div class="grid gap-3 grid-cols-1 grid-flow-row auto-rows-min overflow-y-auto h-full">
                         <div v-for="(shipment, ii) in stage.shipments" :key="ii" @click="onSelectShipment(shipment.id)">
-                            <TrackboardItem :shipment="shipment"></TrackboardItem>
+                            <TrackboardItem :shipmentId="shipment.id"></TrackboardItem>
                         </div>
                         <div class="h-60"></div>
                     </div>
@@ -23,7 +27,7 @@
 import Navbar from '@/components/Navbar.vue';
 import Modal from '@/components/Modal.vue';
 import TrackboardItem from '@/components/TrackboardItem.vue';
-import { computed, defineComponent, ref } from 'vue';
+import { computed, defineComponent } from 'vue';
 import { useStore } from 'vuex';
 import _ from 'lodash';
 import { Shipment } from '@/models/Shipment';
@@ -52,11 +56,13 @@ export default defineComponent({
 
             const allStages = _.chain(allShipments)
                 .groupBy('stage')
-                .map((value: Array<Shipment>, key: string) => ({
-                    name: key,
-                    sort: value[0].stageSort,
-                    shipments: value,
-                }))
+                .map((value: Array<Shipment>, key: string) => {
+                    return {
+                        name: key,
+                        sort: value[0].stageSort,
+                        shipments: _.orderBy(value, ['stageSince', 'progress'], ['asc', 'desc']),
+                    };
+                })
                 .value();
 
             return _.sortBy(allStages, 'sort');
@@ -66,12 +72,6 @@ export default defineComponent({
             store.dispatch('shipments/setActiveShipmentId', id);
         };
         return { queryText, allStages, onSelectShipment };
-    },
-    mounted() {
-        this.$store.dispatch('shipments/fetchAllShipments');
-        this.$store.dispatch('planets/fetchAllPlanets');
-        this.$store.dispatch('stages/fetchAllStages');
-        this.$store.dispatch('map/fetchAll');
     },
 });
 </script>

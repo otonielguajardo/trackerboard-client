@@ -1,14 +1,19 @@
 import { ActionContext } from 'vuex';
 import { State } from './index';
+import moment from 'moment';
 
 export interface AppState {
     theme: string;
     language: string;
+    clock: string;
+    clockInterval: any;
 }
 
 const state: AppState = {
     theme: 'light',
     language: 'human',
+    clock: moment().format(),
+    clockInterval: null,
 };
 
 const mutations = {
@@ -28,6 +33,12 @@ const mutations = {
         body.className = body.className.replace(prevTheme, newTheme);
         state.theme = newTheme;
     },
+    LOOP_CLOCK: (state: AppState): void => {
+        clearInterval(state.clockInterval);
+        state.clockInterval = setInterval(() => {
+            state.clock = moment().format();
+        }, 1000);
+    },
 };
 
 const actions = {
@@ -36,6 +47,9 @@ const actions = {
     },
     async toggleLanguage(ctx: ActionContext<AppState, State>): Promise<void> {
         ctx.commit('TOGGLE_LANGUAGE');
+    },
+    async initClock(ctx: ActionContext<AppState, State>): Promise<void> {
+        ctx.commit('LOOP_CLOCK');
     },
 };
 
