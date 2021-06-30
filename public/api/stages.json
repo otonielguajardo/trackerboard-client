@@ -49,7 +49,7 @@
         "status": {
             "textGood": "",
             "textBad": "",
-            "unit": "",
+            "unit": "m",
             "modifier": "after",
             "digit": 1
         }
