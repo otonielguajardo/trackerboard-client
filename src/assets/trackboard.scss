@@ -7,10 +7,21 @@
     .card {
         @apply flex cursor-pointer;
         &-status {
-            @apply rounded-r-none rounded-md w-2 transition-colors duration-700;
+            @apply rounded-r-none rounded-md w-2 transition-colors duration-700 bg-gray-300 dark:bg-gray-800;
+            &.danger {
+                @apply bg-red-500;
+            }
+            &.warning {
+                @apply bg-yellow-500;
+            }
+            &.good {
+                @apply bg-green-500;
+            }
         }
         &-content {
-            @apply bg-white dark:bg-gray-900 px-2 py-1 rounded-l-none rounded-md mr-3 flex-grow select-none;
+            @apply bg-white dark:bg-gray-900 p-2 rounded-l-none rounded-md mr-3 flex-grow select-none;
+            @apply grid gap-x-2 items-center;
+            grid-template-columns: 25px 1fr 28px;
         }
     }
 }

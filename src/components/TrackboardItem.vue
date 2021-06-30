@@ -1,25 +1,16 @@
 <template>
     <div class="card">
-        <div
-            :class="{
-                'bg-red-500': status.class == 'danger',
-                'bg-yellow-500': status.class == 'warning',
-                'bg-green-500': status.class == 'good',
-                'bg-gray-300': status.class == 'loading',
-            }"
-            class="card-status"
-        ></div>
+        <div :class="status.class" class="card-status"></div>
         <div class="card-content">
-            <!-- <p>{{ shipment.id }}</p> -->
-            <div class="flex justify-between">
-                <span>{{ thisShipment.pilot.name }}</span>
-                <span class="text-gray-400">
-                    <small> {{ thisShipment.progress.toFixed() }}% </small>
-                </span>
-            </div>
-            <p class="select-none text-center">
-                <small>{{ status.date }}</small>
-            </p>
+            <div
+                class="h-full bg-cover rounded-sm bg-center"
+                :style="{ 'background-image': 'url(' + thisShipment.pilot.src + ')' }"
+            ></div>
+            <span :class="language != 'aurebesh' ? 'truncate' : ''">{{ thisShipment.pilot.name }}</span>
+            <small class="text-gray-400 text-right" v-if="language != 'aurebesh'">
+                {{ thisShipment.progress.toFixed() }}%</small
+            >
+            <!-- <small class="text-gray-400 select-none text-center col-span-3">{{ status.date }}</small> -->
         </div>
     </div>
 </template>
@@ -39,10 +30,11 @@ export default defineComponent({
     setup(props) {
         const store = useStore();
 
+        const language = computed(() => store.state.app.language);
         const thisShipment = computed(() => _.find(store.state.shipments.allShipments, { id: props.shipmentId }));
         const clock = computed(() => store.state.app.clock);
         const status = ref({
-            class: 'loading',
+            class: '',
             date: '...',
             text: '...',
         });
@@ -98,7 +90,7 @@ export default defineComponent({
             }
         });
 
-        return { thisShipment, status };
+        return { language, thisShipment, status };
     },
 });
 </script>

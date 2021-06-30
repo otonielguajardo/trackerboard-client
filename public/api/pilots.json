@@ -1,6 +1,6 @@
 [
     {
-        "name": "Han and Chewie",
+        "name": "Han & Chewie",
         "src": "/img/characters/han_and_chewie.png",
         "ship": { "src": "/img/ships/millennium_falcon.png", "name": "Millenium Falcon" }
     },
@@ -17,7 +17,8 @@
     {
         "name": "R0-GR",
         "src": "/img/characters/battle_droid.png",
-        "ship": { "src": "/img/ships/droid_starfighter.png", "name": "Droid Starfighter" }
+        "ship": { "src": "/img/ships/droid_starfighter.png", "name": "Droid Starfighter" },
+        "faction": { "name": "Bounty Hunter", "src": "/img/factions/bounty_hunter.png" }
     },
     {
         "name": "Admiral Ackbar",
@@ -45,7 +46,7 @@
         "ship": { "src": "/img/ships/razorcrest.png", "name": "Razor Crest" }
     },
     {
-        "name": "C-3PO and R2",
+        "name": "C-3PO & R2",
         "src": "/img/characters/c_3po_and_r2.png",
         "ship": { "src": "/img/ships/scape_pod.png", "name": "Escape Pod" }
     },
@@ -65,8 +66,8 @@
         "ship": { "src": "/img/ships/slave_1.png", "name": "Slave 1" }
     },
     {
-        "name": "Cpt. Panaka",
-        "src": "/img/characters/darth_maul.png",
+        "name": "Panaka",
+        "src": "/img/characters/panaka.png",
         "ship": { "src": "/img/ships/scimitar.png", "name": "" }
     }
 ]
