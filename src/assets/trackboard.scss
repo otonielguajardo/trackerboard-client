@@ -20,8 +20,9 @@
         }
         &-content {
             @apply bg-white dark:bg-gray-900 p-2 rounded-l-none rounded-md mr-3 flex-grow select-none;
-            @apply grid gap-x-2 items-center;
+            @apply grid gap-x-2 items-center gap-y-1;
             grid-template-columns: 25px 1fr 28px;
+            grid-template-rows: 1fr 1fr;
         }
     }
 }

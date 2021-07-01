@@ -10,7 +10,7 @@
             <small class="text-gray-400 text-right" v-if="language != 'aurebesh'">
                 {{ thisShipment.progress.toFixed() }}%</small
             >
-            <!-- <small class="text-gray-400 select-none text-center col-span-3">{{ status.date }}</small> -->
+            <small class="text-gray-400 select-none  col-span-3">since {{ status.date }}</small>
         </div>
     </div>
 </template>
@@ -35,7 +35,7 @@ export default defineComponent({
         const clock = computed(() => store.state.app.clock);
         const status = ref({
             class: '',
-            date: '...',
+            date: '☉',
             text: '...',
         });
 
