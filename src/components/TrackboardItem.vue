@@ -10,7 +10,7 @@
             <small class="text-gray-400 text-right" v-if="language != 'aurebesh'">
                 {{ thisShipment.progress.toFixed() }}%</small
             >
-            <small class="text-gray-400 select-none  col-span-3">since {{ status.date }}</small>
+            <small class="text-gray-400 select-none  col-span-3">{{ status.date }}</small>
         </div>
     </div>
 </template>
