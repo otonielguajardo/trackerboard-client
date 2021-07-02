@@ -1,5 +1,5 @@
 <template>
-    <div class="flex py-3 justify-between" v-if="activeShipment">
+    <div class="flex mb-3 justify-between" v-if="activeShipment">
         <template v-for="(stage, si) in allStages" :key="si">
             <div
                 :class="

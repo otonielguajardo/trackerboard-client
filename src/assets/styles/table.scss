@@ -1,0 +1,28 @@
+table {
+    border-spacing: 0;
+    @apply w-full text-sm border-separate;
+    tr {
+        td {
+            @apply py-1 px-2 border-l border-b border-gray-300 dark:border-gray-700;
+        }
+        td:last-child {
+            @apply border-r border-gray-300 dark:border-gray-700;
+        }
+    }
+    tr:first-child {
+        td:first-child {
+            @apply rounded-tl-md border-t border-gray-300 dark:border-gray-700;
+        }
+        td:last-child {
+            @apply rounded-tr-md border-t border-gray-300 dark:border-gray-700;
+        }
+    }
+    tr:last-child {
+        td:first-child {
+            @apply rounded-bl-md border-gray-300 dark:border-gray-700;
+        }
+        td:last-child {
+            @apply rounded-br-md border-gray-300 dark:border-gray-700;
+        }
+    }
+}

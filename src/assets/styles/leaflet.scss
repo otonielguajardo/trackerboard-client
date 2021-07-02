@@ -2,10 +2,18 @@
     &-popup-tip,
     &-popup-content-wrapper {
         font-family: 'Rubik', sans-serif;
+        @apply dark:bg-gray-900 dark:text-gray-100;
     }
     &-control {
+        &-zoom-in,
+        &-zoom-out {
+            @apply dark:bg-gray-900 dark:text-gray-100;
+            &.leaflet-disabled {
+                @apply dark:text-gray-700;
+            }
+        }
         &-attribution {
-            @apply bg-black rounded-tl-sm;
+            @apply dark:bg-gray-900 bg-black rounded-tl-sm;
         }
     }
     &-popup-content {
@@ -23,19 +31,6 @@ body.dark {
         &-popup-tip,
         &-popup-content-wrapper {
             font-family: 'Aurebesh';
-            @apply bg-gray-900 text-gray-100;
-        }
-        &-control {
-            &-zoom-in,
-            &-zoom-out {
-                @apply bg-gray-900 text-gray-100;
-                &.leaflet-disabled {
-                    @apply text-gray-700;
-                }
-            }
-            &-attribution {
-                @apply bg-gray-900 rounded-tl-sm;
-            }
         }
         &-bar a {
             @apply border-gray-800;

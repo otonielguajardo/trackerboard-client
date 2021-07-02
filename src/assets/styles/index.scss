@@ -3,10 +3,9 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap');
-
 @font-face {
     font-family: 'Aurebesh';
-    src: url('./fonts/aurebesh.woff2') format('woff2'), url('./fonts/aurebesh.woff') format('woff');
+    src: url('../fonts/aurebesh.woff2') format('woff2'), url('../fonts/aurebesh.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -37,20 +36,5 @@ body {
 @import './trackboard.scss';
 @import './navbar.scss';
 @import './modal.scss';
+@import './table.scss';
 @import './transitions.scss';
-
-.button-group {
-    @apply flex;
-    button {
-        @apply p-1;
-        &:only-of-type {
-            @apply rounded-md;
-        }
-        &:first-of-type {
-            @apply rounded-r-none rounded-l-md;
-        }
-        &:last-of-type {
-            @apply rounded-l-none rounded-r-md;
-        }
-    }
-}

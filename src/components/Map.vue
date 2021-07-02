@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="flex justify-between py-3">
+        <div class="flex justify-between mb-3">
             <div>
                 <span class="mr-2 select-none">Follow Pilot</span>
                 <input type="checkbox" v-model="followPilot" />

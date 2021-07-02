@@ -6,13 +6,22 @@
         <transition name="slide" appear>
             <div v-if="showComponent" class="modal-container">
                 <div class="modal-panel" v-if="showComponent">
-                    <div class="flex justify-between mb-3 select-none">
-                        {{ activeShipment.pilot.name }}
-                        <button class="px-3 py-1 rounded-md bg-blue-500 text-white" @click="onClose()">
-                            X
+                    <div
+                        class="modal-panel-header"
+                    >
+                        <span class="uppercase"> {{ activeShipment.id.split('-')[0] }} </span>
+                        <button
+                            class="px-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 text-black dark:text-gray-50"
+                            @click="onClose()"
+                        >
+                            <i class="ri-close-fill"></i>
                         </button>
                     </div>
-                    <TrackboardDetail></TrackboardDetail>
+                    <div class="modal-panel-content">
+                        <div class="max-h-full">
+                            <TrackboardDetail></TrackboardDetail>
+                        </div>
+                    </div>
                 </div>
             </div>
         </transition>

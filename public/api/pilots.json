@@ -2,72 +2,106 @@
     {
         "name": "Han & Chewie",
         "src": "/img/characters/han_and_chewie.png",
-        "ship": { "src": "/img/ships/millennium_falcon.png", "name": "Millenium Falcon" }
+        "ship": { "src": "/img/ships/millennium_falcon.png", "name": "Millenium Falcon" },
+        "faction": { "name": "Rebel Alliance", "src": "/img/factions/rebel_alliance.png" },
+        "races": ["Human", "Alien"]
     },
     {
         "name": "Luke",
         "src": "/img/characters/luke.png",
-        "ship": { "src": "/img/ships/x_wing.png", "name": "X-Wing" }
+        "ship": { "src": "/img/ships/x_wing.png", "name": "X-Wing" },
+        "faction": { "name": "Rebel Alliance", "src": "/img/factions/rebel_alliance.png" },
+        "races": ["Human"]
+    },
+    {
+        "name": "K-2SO",
+        "src": "/img/characters/k_2so.png",
+        "ship": { "src": "/img/ships/u_wing.png", "name": "U-Wing" },
+        "faction": { "name": "Rebel Alliance", "src": "/img/factions/rebel_alliance.png" },
+        "races": ["Droid"]
     },
     {
         "name": "Greedo",
         "src": "/img/characters/greedo.png",
-        "ship": { "src": "/img/ships/mon_calamari.png", "name": "Mon Calamari" }
+        "ship": { "src": "/img/ships/mon_calamari.png", "name": "Mon Calamari" },
+        "faction": { "name": "Bounty Hunter", "src": "/img/factions/bounty_hunter.png" },
+        "races": ["Alien"]
     },
     {
         "name": "R0-GR",
         "src": "/img/characters/battle_droid.png",
         "ship": { "src": "/img/ships/droid_starfighter.png", "name": "Droid Starfighter" },
-        "faction": { "name": "Bounty Hunter", "src": "/img/factions/bounty_hunter.png" }
+        "faction": { "name": "Trade Federation", "src": "/img/factions/trade_federation.png" },
+        "races": ["Droid"]
     },
     {
         "name": "Admiral Ackbar",
         "src": "/img/characters/admiral_ackbar.png",
-        "ship": { "src": "/img/ships/mon_calamari.png", "name": "Mon Calamari" }
+        "ship": { "src": "/img/ships/mon_calamari.png", "name": "Mon Calamari" },
+        "faction": { "name": "Rebel Alliance", "src": "/img/factions/rebel_alliance.png" },
+        "races": ["Alien"]
     },
     {
         "name": "Darth Vader",
         "src": "/img/characters/darth_vader.png",
-        "ship": { "src": "/img/ships/tie_advanced.png", "name": "TIE Advanced" }
+        "ship": { "src": "/img/ships/tie_advanced.png", "name": "TIE Advanced" },
+        "faction": { "name": "Galactic Empire", "src": "/img/factions/galactic_empire.png" },
+        "races": ["Human", "Droid"]
     },
     {
         "name": "Obi Wan",
         "src": "/img/characters/obi_wan.png",
-        "ship": { "src": "/img/ships/jedi_starfighter.png", "name": "Jedi Starfighter" }
+        "ship": { "src": "/img/ships/jedi_starfighter.png", "name": "Jedi Starfighter" },
+        "faction": { "name": "Galactic Republic", "src": "/img/factions/galactic_republic.png" },
+        "races": ["Human"]
     },
     {
         "name": "Darth Maul",
         "src": "/img/characters/darth_maul.png",
-        "ship": { "src": "/img/ships/scimitar.png", "name": "Scimitar" }
+        "ship": { "src": "/img/ships/scimitar.png", "name": "Scimitar" },
+        "faction": { "name": "Trade Federation", "src": "/img/factions/trade_federation.png" },
+        "races": ["Alien"]
     },
     {
         "name": "Din Djarin",
         "src": "/img/characters/din_djarin.png",
-        "ship": { "src": "/img/ships/razorcrest.png", "name": "Razor Crest" }
+        "ship": { "src": "/img/ships/razorcrest.png", "name": "Razor Crest" },
+        "faction": { "name": "Bounty Hunter", "src": "/img/factions/bounty_hunter.png" },
+        "races": ["Human"]
     },
     {
         "name": "C-3PO & R2",
         "src": "/img/characters/c_3po_and_r2.png",
-        "ship": { "src": "/img/ships/scape_pod.png", "name": "Escape Pod" }
+        "ship": { "src": "/img/ships/scape_pod.png", "name": "Escape Pod" },
+        "faction": { "name": "Rebel Alliance", "src": "/img/factions/rebel_alliance.png" },
+        "races": ["Droid"]
     },
     {
         "name": "Padme",
         "src": "/img/characters/padme.png",
-        "ship": { "src": "/img/ships/royal_ship.png", "name": "Naboo Royal Ship" }
+        "ship": { "src": "/img/ships/royal_ship.png", "name": "Naboo Royal Ship" },
+        "faction": { "name": "Galactic Republic", "src": "/img/factions/galactic_republic.png" },
+        "races": ["Human"]
     },
     {
         "name": "Leia",
         "src": "/img/characters/leia.png",
-        "ship": { "src": "/img/ships/corellian_corvette.png", "name": "Corellian Corvette" }
+        "ship": { "src": "/img/ships/corellian_corvette.png", "name": "Corellian Corvette" },
+        "faction": { "name": "Rebel Alliance", "src": "/img/factions/rebel_alliance.png" },
+        "races": ["Human"]
     },
     {
         "name": "Boba Fett",
         "src": "/img/characters/boba_fett.png",
-        "ship": { "src": "/img/ships/slave_1.png", "name": "Slave 1" }
+        "ship": { "src": "/img/ships/slave_1.png", "name": "Slave 1" },
+        "faction": { "name": "Bounty Hunter", "src": "/img/factions/bounty_hunter.png" },
+        "races": ["Human"]
     },
     {
         "name": "Panaka",
         "src": "/img/characters/panaka.png",
-        "ship": { "src": "/img/ships/scimitar.png", "name": "" }
+        "ship": { "src": "/img/ships/scimitar.png", "name": "" },
+        "faction": { "name": "Galactic Republic", "src": "/img/factions/galactic_republic.png" },
+        "races": ["Human"]
     }
 ]
