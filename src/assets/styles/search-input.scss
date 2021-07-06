@@ -1,0 +1,12 @@
+.search-input {
+    @apply transition-all border dark:border-gray-700 border-gray-300 rounded-full grid overflow-hidden;
+    &-magnifyer {
+        @apply p-2 col-start-1 col-end-2 row-start-1 text-gray-400 row-end-2 place-self-start z-10;
+    }
+    &-close {
+        @apply p-2 col-start-1 col-end-2 row-start-1 row-end-2 cursor-pointer transition-all place-self-end;
+    }
+    &-control {
+        @apply col-start-1 col-end-2 row-start-1 row-end-2 w-full px-4 py-2 text-sm bg-transparent;
+    }
+}

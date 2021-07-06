@@ -1,9 +1,6 @@
 <template>
-    <div
-        :class="queryText != '' ? 'w-full' : 'w-10'"
-        class="transition-all border dark:border-gray-700 border-gray-300 rounded-full grid overflow-hidden"
-    >
-        <div class="p-2 col-start-1 col-end-2 row-start-1 text-gray-400 row-end-2 place-self-start z-10">
+    <div :class="queryText != '' ? 'w-full' : 'w-10'" class="search-input">
+        <div class="search-input-magnifyer">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
                 <path
                     fill-rule="evenodd"
@@ -14,7 +11,7 @@
         </div>
         <div
             :class="queryText != '' ? 'z-10 text-gray-400 animate-spin-in' : 'text-transparent animate-spin-out'"
-            class="p-2 col-start-1 col-end-2 row-start-1 row-end-2 cursor-pointer transition-all place-self-end"
+            class="search-input-close"
             @click="queryText = ''"
         >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -30,7 +27,7 @@
             @click="queryText == '' ? (queryText = ' ') : ''"
             @keyup.enter="$event.target.blur()"
             v-model="queryText"
-            class="col-start-1 col-end-2 row-start-1 row-end-2 w-full px-4 py-2 text-sm bg-transparent"
+            class="search-input-control"
         />
     </div>
 </template>
