@@ -1,40 +1,20 @@
 <template>
-    <div class="flex mb-3 justify-between" v-if="activeShipment">
+    <div class="status" v-if="activeShipment">
         <template v-for="(stage, si) in allStages" :key="si">
             <div
-                :class="
-                    activeShipment.progress >= (100 / allStages.length) * si
-                        ? 'bg-blue-500'
-                        : 'bg-transparent border border-gray-200 dark:border-gray-800'
-                "
-                class="w-5 h-5 rounded-full text-lg text-white items-center transition-colors flex justify-center "
+                :class="activeShipment.progress >= (100 / allStages.length) * si ? 'active' : 'inactive'"
+                class="status-step"
             ></div>
-            <div class="w-1/12 align-center items-center align-middle content-center flex">
-                <div
-                    class="w-full rounded items-center align-middle align-center flex-1 border border-gray-200 dark:border-gray-800"
-                >
+            <div class="status-bar" :style="{ width: 40 / allStages.length + '%' }">
+                <div class="status-bar-progress">
                     <div
-                        class="bg-blue-500 text-xs leading-none py-1 text-center text-grey-darkest rounded transition-all "
-                        :style="{
-                            'max-width':
-                                activeShipment.progress - (100 / allStages.length) * si <= 0
-                                    ? 0
-                                    : ((activeShipment.progress - (100 / allStages.length) * si) * 100) /
-                                          (100 / allStages.length) +
-                                      '%',
-                        }"
+                        class="status-bar-progress-fill"
+                        :style="{ 'max-width': progressFillMaxWidth(allStages.length, activeShipment.progress, si) }"
                     ></div>
                 </div>
             </div>
         </template>
-        <div
-            :class="
-                activeShipment.progress >= 100
-                    ? 'bg-blue-500'
-                    : 'bg-transparent border border-gray-200 dark:border-gray-800'
-            "
-            class="w-5 h-5 rounded-full text-lg text-white flex items-center transition-colors "
-        ></div>
+        <div :class="activeShipment.progress >= 100 ? 'active' : 'inactive'" class="status-step"></div>
     </div>
 </template>
 
@@ -53,8 +33,15 @@ export default defineComponent({
         const activeShipment = computed(() =>
             _.find(store.state.shipments.allShipments, { id: store.state.shipments.activeShipmentId })
         );
+        const progressFillMaxWidth = (allStepsLength: number, progress: number, index: number): string => {
+            let maxWidth = '0';
+            if (progress - (100 / allStepsLength) * index > 0) {
+                maxWidth = ((progress - (100 / allStepsLength) * index) * 100) / (100 / allStepsLength) + '%';
+            }
+            return maxWidth;
+        };
 
-        return { allStages, activeShipment, activeShipmentLoading };
+        return { progressFillMaxWidth, allStages, activeShipment, activeShipmentLoading };
     },
 });
 </script>

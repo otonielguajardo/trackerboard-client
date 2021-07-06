@@ -1,0 +1,21 @@
+.status {
+    @apply flex mb-3 justify-between;
+    &-step {
+        @apply w-5 h-5 rounded-full text-lg text-white items-center transition-colors flex justify-center;
+        &.active {
+            @apply bg-blue-500;
+        }
+        &.inactive {
+            @apply bg-transparent border border-gray-200 dark:border-gray-800;
+        }
+    }
+    &-bar {
+        @apply items-center align-middle content-center flex;
+        &-progress {
+            @apply w-full rounded items-center align-middle flex-1 border border-gray-200 dark:border-gray-800;
+            &-fill {
+                @apply bg-blue-500 text-xs leading-none py-1 text-center rounded transition-all;
+            }
+        }
+    }
+}
