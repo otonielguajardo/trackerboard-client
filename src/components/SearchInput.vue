@@ -1,5 +1,5 @@
 <template>
-    <div :class="queryText != '' ? 'w-full' : 'w-10'" class="search-input">
+    <div :class="queryText != '' ? 'active' : 'inactive'" class="search-input">
         <div class="search-input-magnifyer">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5">
                 <path
@@ -9,11 +9,7 @@
                 />
             </svg>
         </div>
-        <div
-            :class="queryText != '' ? 'z-10 text-gray-400 animate-spin-in' : 'text-transparent animate-spin-out'"
-            class="search-input-close"
-            @click="queryText = ''"
-        >
+        <div :class="queryText != '' ? 'active' : 'inactive'" class="search-input-close" @click="queryText = ''">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path
                     fill-rule="evenodd"
@@ -23,7 +19,7 @@
             </svg>
         </div>
         <input
-            :class="queryText != '' ? 'px-9 ' : 'cursor-pointer z-10 text-transparent'"
+            :class="queryText != '' ? 'active' : 'inactive'"
             @click="queryText == '' ? (queryText = ' ') : ''"
             @keyup.enter="$event.target.blur()"
             v-model="queryText"
