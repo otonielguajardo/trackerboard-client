@@ -38,6 +38,7 @@ npm run lint:markup
 
 -   [Vue.js](https://v3.vuejs.org/) - Progressive framework for building user interfaces
 -   [Leaflet](https://leafletjs.com/) - Open source JavaScript library for web mapping applications
+-   [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework  
 
 ## Contributing
 
