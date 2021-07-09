@@ -3,24 +3,42 @@
 Follow pilots around the galaxy
 
 ## Project setup
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Run application in local development server
+
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compile and minify for production
+
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### Lint
+
+To check javascript typescript files
+
 ```
-npm run lint
+npm run lint:script
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+To check Vue template tags
+
+```
+npm run lint:markup
+```
+
+## Built with
+
+-   [Vue.js](https://v3.vuejs.org/) - Progressive framework for building user interfaces
+-   [Leaflet](https://leafletjs.com/) - Open source JavaScript library for web mapping applications
+
+## Contributing
+
+Feel free to fork this repo and share feedback
