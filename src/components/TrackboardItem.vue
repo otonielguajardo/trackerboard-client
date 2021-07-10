@@ -1,18 +1,12 @@
 <template>
-    <div class="card">
-        <div :class="status.class" class="card-status"></div>
-        <div class="card-content">
-            <div
-                class="h-full bg-cover rounded-sm bg-center"
-                :style="{ 'background-image': 'url(' + thisShipment.pilot.src + ')' }"
-            ></div>
-            <span :class="language != 'aurebesh' ? 'truncate' : ''">{{ thisShipment.pilot.name }}</span>
-            <small class="text-gray-400 text-right" v-if="language != 'aurebesh'">
-                {{ thisShipment.progress.toFixed() }}%</small
-            >
-            <small class="text-gray-400 select-none  col-span-3">{{ status.date }}</small>
-        </div>
-    </div>
+    <Card
+        :statusClass="status.class"
+        :statusDate="status.date"
+        :pilotImage="thisShipment.pilot.src"
+        :pilotName="thisShipment.pilot.name"
+        :progress="thisShipment.progress"
+        @click="onSelectShipment(thisShipment.id)"
+    ></Card>
 </template>
 
 <script lang="ts">
@@ -21,8 +15,10 @@ import moment from 'moment';
 import _ from 'lodash';
 import { useStore } from 'vuex';
 import { Stage } from '@/models/Stage';
+import Card from '@/components/Card.vue';
 
 export default defineComponent({
+    components: { Card },
     name: 'TrackboardItem',
     props: {
         shipmentId: { required: true, type: String },
@@ -34,7 +30,7 @@ export default defineComponent({
         const thisShipment = computed(() => _.find(store.state.shipments.allShipments, { id: props.shipmentId }));
         const clock = computed(() => store.state.app.clock);
         const status = ref({
-            class: '',
+            class: 'loading',
             date: '☉',
             text: '...',
         });
@@ -90,7 +86,11 @@ export default defineComponent({
             }
         });
 
-        return { language, thisShipment, status };
+        const onSelectShipment = (id: string | null) => {
+            store.dispatch('shipments/setActiveShipmentId', id);
+        };
+
+        return { language, thisShipment, status, onSelectShipment };
     },
 });
 </script>

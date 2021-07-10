@@ -30,6 +30,20 @@ const state: ShipmentState = {
     activeShipmentLoading: false,
 };
 
+export const generateRandomShipment = (pilot: Pilot): Shipment => {
+    const progress = rnd(0, 100);
+    const coordinates = { lat: rnd(50, 80), lng: rnd(50, 150) };
+    return {
+        id: uuidv4(),
+        pilot,
+        progress,
+        coordinates,
+        stage: '',
+        status: '',
+        stageSince: moment().format(),
+    };
+};
+
 const mutations = {
     SET_ALL_STAGES: (state: ShipmentState, data: Stage[]): void => {
         state.allStages = data;
@@ -38,22 +52,7 @@ const mutations = {
         //
         clearInterval(state.allShipmentsInterval);
 
-        const allShipments = allPilots.map(
-            (pilot: Pilot): Shipment => {
-                const progress = rnd(0, 100);
-                const coordinates = { lat: rnd(50, 80), lng: rnd(50, 150) };
-                return {
-                    id: uuidv4(),
-                    pilot,
-                    progress,
-                    coordinates,
-                    stage: '',
-                    status: '',
-                    stageSince: moment().format(),
-                };
-            }
-        );
-
+        const allShipments = allPilots.map((pilot: Pilot): Shipment => generateRandomShipment(pilot));
         let y_counter = 0;
         let x_counter = 0;
         let y = true;

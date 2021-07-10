@@ -12,6 +12,7 @@ module.exports = {
     ecmaVersion: 2020
   },
   rules: {
+    '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/explicit-module-boundary-types': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     '@typescript-eslint/no-explicit-any': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
