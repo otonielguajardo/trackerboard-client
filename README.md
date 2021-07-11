@@ -38,7 +38,8 @@ npm run lint:markup
 
 -   [Vue.js](https://v3.vuejs.org/) - Progressive framework for building user interfaces
 -   [Leaflet](https://leafletjs.com/) - Open source JavaScript library for web mapping applications
--   [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework  
+-   [TailwindCSS](https://tailwindcss.com/) - Utility-first CSS framework
+-   [Storybook](https://storybook.js.org/) - Storybook is an open source tool for building UI components and pages in isolation. It streamlines UI development, testing, and documentation.
 
 ## Contributing
 
