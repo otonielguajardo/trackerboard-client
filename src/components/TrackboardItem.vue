@@ -82,7 +82,7 @@ export default defineComponent({
                         status.value.text = stage.status.textGood;
                         break;
                 }
-                status.value.date = moment(thisShipment.value.stageSince).fromNow();
+                status.value.date = thisShipment.value.stageSince;
             }
         });
 
