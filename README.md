@@ -6,6 +6,8 @@ https://github.com/user-attachments/assets/6360c07b-d0c2-43e9-87e6-b137afc41da3
 
 https://github.com/user-attachments/assets/69a293b4-6dc5-4b1c-b78c-46fe0c0d9897
 
+<img width="764" alt="Screenshot 2024-08-01 at 1 25 44 p m" src="https://github.com/user-attachments/assets/29c97dca-0db9-4121-9d9b-9e1bf607af59">
+
 ## Project setup
 
 ```
